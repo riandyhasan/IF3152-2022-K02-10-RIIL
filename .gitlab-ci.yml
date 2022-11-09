@@ -1,0 +1,51 @@
+stages:
+  - test-js
+  - test-py
+
+test_js:
+  image: node:latest
+  stage: test-js
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  rules:
+    - if: ($CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push")
+  before_script:
+    - npm install
+  script:
+    - npm test
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    reports:
+      junit:
+        - test-results-js.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/test-js.xml
+
+test_python:
+  image: python:lastest
+  stage: test-py
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  rules:
+    - if: ($CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push")
+  before_script:
+    - 'python -m venv env'
+    - '.\env\Scripts\activate'
+    - 'python -m pip install -r requirements.txt'
+  script:
+    - coverage run -m pytest
+    - coverage report
+    - coverage xml
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    reports:
+      pytest:
+        - test-results-py.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/test-py.xml
+
+

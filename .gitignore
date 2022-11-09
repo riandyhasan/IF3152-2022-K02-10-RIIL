@@ -1,0 +1,13 @@
+# dependencies
+/node_modules
+/env
+
+# testing
+/coverage
+
+# vscode
+/.vscode/
+
+# local env files
+.env
+.env.development

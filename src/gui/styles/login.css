@@ -1,0 +1,69 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  font-family: 'Inter';
+  color: white;
+  background: linear-gradient(180deg, #102847 0%, #4A6E8B 100%);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 500px;
+}
+
+.tagline {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 42px;
+  text-align: center;
+}
+
+.input {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.input-form {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: white;
+  width: 280px;
+  height: 40px;
+  border: none;
+  padding-left: 10px;
+}
+
+.input-icon {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+.input-label {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 10px;
+}
+
+.btn-login {
+  width: 290px;
+  height: 40px;
+
+  background: #000000;
+  color: white;
+  border-radius: 15px;
+
+  font-weight: 600;
+  font-size: 16px;
+
+  cursor: pointer;
+}
