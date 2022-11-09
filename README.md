@@ -11,7 +11,7 @@ Real-time Inventory Information Log (RIIL) adalah sebuah aplikasi perangkat luna
 
 1. Clone repository
 ```
-git clone "url"
+git clone "https://github.com/riandyhasan/RIIL.git"
 ```
 2. Install dependencies untuk nodejs
 ```
@@ -28,6 +28,7 @@ python -m venv env
 5. Install Python depedencies
 ```
 pip3 install -r requirements.txt
+```
 6. Jalankan aplikasi
 ```
 npm start
