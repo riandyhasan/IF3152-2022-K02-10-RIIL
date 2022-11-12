@@ -18,6 +18,7 @@ const ipc = {
       // From render to main.
       'send': [
           'homeShow',
+          'alertShow',
       ],
       // From main to render.
       'receive': [],

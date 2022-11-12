@@ -1,8 +1,14 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
 const electronIpcMain = require('electron').ipcMain;
 const path = require('path')
+const spawn = require('child_process').spawn;
 
 let win;
+
+const python = spawn('py', ['/src/databases/app.py'])
+python.stdout.on('data', function (data) {
+  console.log("Ada kok")
+});
 
 function createWindow () {
   win = new BrowserWindow({
@@ -11,9 +17,12 @@ function createWindow () {
     resizable: false,
     icon: './img/logo-riil-square.ico',
     webPreferences: {
-      preload: path.join(__dirname, '/preload.js'),
       nodeIntegration: true,
       contextIsolation: true,
+      nodeIntegrationInWorker: true,
+      nodeIntegrationInSubFrames: true,
+      enableRemoteModule: true,
+      preload: path.join(__dirname, '/preload.js'),
     }
   })
 
@@ -23,6 +32,16 @@ function createWindow () {
 function openPage(path) {
   win.loadFile(__dirname + path) 
   .then(() => { win.show(); })
+}
+
+function showAlert(title, message){
+  dialog.showMessageBox({
+    title: "RIIL",
+    message: title,
+    detail: message,
+    buttons: ['Ok'],
+    icon: './img/logo-riil-square.ico',
+   });
 }
 
 app.whenReady().then(() => {
@@ -42,6 +61,10 @@ app.on('window-all-closed', () => {
 })
 
 // IPC
-electronIpcMain.on('homeShow', e => {
+electronIpcMain.on('homeShow', () => {
   openPage('/pages/Home/index.html');
+});
+
+electronIpcMain.on('alertShow', () => {
+  showAlert("test", "dasd");
 })
