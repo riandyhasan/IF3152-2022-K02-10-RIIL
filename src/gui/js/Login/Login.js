@@ -13,6 +13,7 @@ export class Login {
         alert('Login berhasil');
         window.ipcRender.send('homeShow');
       }else{
+        window.ipcRender.send('alertShow', "title");
         alert('Password salah!');
       }
     }else{

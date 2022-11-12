@@ -4,7 +4,7 @@ const togglePassword = document.querySelector('#togglePassword');
 const buttonLogin = document.querySelector('#btn-login');
 const password = document.querySelector('#id_password');
 
-togglePassword.addEventListener('click', e => {
+togglePassword.addEventListener('click', () => {
     // toggle the type attribute
     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
     password.setAttribute('type', type);
@@ -13,7 +13,7 @@ togglePassword.addEventListener('click', e => {
     this.classList.toggle('fa-eye');
 }); ``
 
-buttonLogin.addEventListener('click', e => {
+buttonLogin.addEventListener('click', () => {
   const user_password = password.value; 
   Login.sendForm(user_password);
 });
@@ -23,4 +23,6 @@ password.addEventListener('keypress', e => {
   if(e.key === 'Enter') Login.sendForm(user_password);
 })
 
-
+fetch('http://127.0.0.1:5000/produk')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
