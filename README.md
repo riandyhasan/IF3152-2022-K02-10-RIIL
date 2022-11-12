@@ -37,12 +37,14 @@ npm start
 ## Branching
 Setiap membuat branch baru harus ambil base dari `master`. Untuk penamaan branch mengikuti format berikut.
 Format branch: `<name>/feature/<title>`
+
 Contoh: vixell-keren/feature/add-product
 Penamaan menggunakan kebab case
 
 ## Pull Request and Commit Messages
 Dalam melakukan commit message mengikuti format berikut.
 Format commit message: `<type>: <message>`
+
 Untuk type mengikuti semantic berikut.
 - `feature`: (menambahkan fitur baru)
 - `fix`: (melakukan bug fix)
@@ -50,6 +52,7 @@ Untuk type mengikuti semantic berikut.
 - `refactor`: (melakukan refactor)
 - `test`: (menambahkan test)
 - `doc`: (menambahkan dokumentasi atau file assets)
+
 Contoh: feature: menambahkan user interface pada halaman Login
         test: menambahkan test pada class Auth
 

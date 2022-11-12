@@ -1,9 +1,14 @@
 # dependencies
 /node_modules
 /env
+/src/databases/__pycache__
+/src/databases/tables/__pycache__
 
 # testing
 /coverage
+
+# database
+/src/databases/-- SQLite.sql
 
 # vscode
 /.vscode/
