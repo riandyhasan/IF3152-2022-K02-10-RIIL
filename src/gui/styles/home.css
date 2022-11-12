@@ -71,6 +71,10 @@ body {
   margin-top: 40px;
 }
 
+.nav-row a {
+  text-decoration: none;
+}
+
 .nav-wrap:hover {
   border: 2px solid #4A6E8B;
   filter: drop-shadow(5px 5px 30px rgba(0, 0, 0, 0.25));
