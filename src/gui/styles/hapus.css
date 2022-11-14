@@ -1,0 +1,93 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Inter';
+    color: white;
+    background: linear-gradient(180deg, #102847 0%, #4A6E8B 100%);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    height: 100%;
+    width: 100vw;
+}
+
+.sub-container {
+    width: 100%
+}
+
+.logo-riil {
+    width: 150px;
+    justify-items: center;
+}
+
+.keterangan{
+    display:flex;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-style: normal;
+    font-size: 17px;
+
+}
+
+.contents-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.input-label {
+    font-size: 16px;
+    line-height: 10px;
+}
+
+::placeholder{
+    color: #FFFFFF;
+}
+
+.form-input {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    width: 280px;
+    height: 40px;
+    border: none;
+    padding-left: 10px;
+}
+
+.form-input-file {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.contents-input {
+    margin-top: 0px;
+    margin-bottom: 0px;      
+}
+
+.upload-icon {
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 12px; 
+    cursor: pointer;
+}
+
