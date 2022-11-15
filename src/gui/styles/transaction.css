@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Inter";
+    overflow-x: hidden;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-row {
+    width: 100%;
+    padding: 30px 0px 30px 40px;
+    align-items: center;
+    display: flex;
+    gap: 50px;
+  }
+  
+  .fa-arrow-left {
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  .logo-riil{
+    width:250px;
+    margin-top: -20px;
+  }
+  
+  .add-transaction {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-button {
+    background: rgba(217, 217, 217, 0.37);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .add-button p {
+    font-weight: 700;
+    font-size: 20px;
+    color: #979797;
+    margin:10px;
+  }
+  
+  .fa-plus {
+    font-size: 25px;
+    color: #C2C2C2;
+  }
+  
+  .product-section {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 70px 30px 70px;
+  }
+  
+  .product-subtitle {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+  }
+
+  .fa-arrow-down {
+    color: #979797;
+    cursor: pointer;
+  }
+
+  .fa-arrow-up {
+    color: #979797;
+    cursor: pointer;
+  }
+  
+  .product-type {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  
+  .see-more {
+    font-weight: 500;
+    font-size: 20px;
+    color: #979797;
+    cursor: pointer;
+  }
+  
+  .tables-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  table {
+    font-family: Inter, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  td, th {
+    border: 0px solid #dddddd;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #979797;
+    color : white;
+  }
+
+  tr:nth-child(even) td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  tr:nth-child(even) td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    width: 180px;
+    height: 240px;
+    cursor: pointer;
+    margin: 10px 5px;
+  }
+  
+  .card-image {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-image img {
+    width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+  }
+  
+  .card-details {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  
+  .product-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #000000;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  
+  .product-size {
+    font-weight: 600;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.41);
+  }
+  
+  .product-price {
+    font-weight: 500;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.41);
+  }
+  
+  .category-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+  }
+  
+  .category-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  
+  .fa-arrow-circle-right {
+    position: absolute;
+    right: 30px;
+    margin-top: 140px;
+    font-size: 50px;
+    color: #F4F4F4;
+    background-color: #979797;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+    border: none;
+    z-index: 100;
+  }
+  
+  .fa-arrow-circle-left {
+    position: absolute;
+    left: 30px;
+    margin-top: 140px;
+    font-size: 50px;
+    color: #F4F4F4;
+    background-color: #979797;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+    border: none;
+    z-index: 100;
+  }
+  
+  .none {
+    display: none !important;
+  }
