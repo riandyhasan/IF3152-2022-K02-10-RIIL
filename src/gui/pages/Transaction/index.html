@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RIIL - Transaction</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../../styles/transaction.css" />
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+
+
+
+<body>
+    <div class="container">
+
+      <div class="nav-row">
+        <i class="fa fa-arrow-left"></i>
+        <img src="../../../../img/logo-riil.png" alt="Logo RIIL" class="logo-riil" />
+      </div>
+
+      <div class="add-transaction">
+        <div class="add-button">
+          <i class="fa fa-plus"></i>
+          <p>Transaksi Baru</p>
+        </div>
+      </div>
+
+      <div class="product-section">
+
+        <div class="product-subtitle">
+          <div class="product-type">Transaction History</div>
+          <div class="sort" id="sort">
+            <i class="fa fa-arrow-down" id="sort-down"></i>
+            <i class="fa fa-arrow-up none" id="sort-up"></i>
+            <div class="see-more" id="sort-title">Sort by Latest</div>
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Metode Pembayaran</th>
+                  <th>Total</th>
+                </tr>
+                <tr>
+                  <td>18/10/2022</td>
+                  <td>Cash</td>
+                  <td>Rp28.000,00</td>
+                </tr>
+                <tr>
+                  <td>03/10/2022</td>
+                  <td>Gopay</td>
+                  <td>Rp12.500,00</td>
+                </tr>
+                <tr>
+                    <td>23/09/2022</td>
+                    <td>Cash</td>
+                    <td>Rp9.750,00</td>
+                  </tr>
+              </table>
+        </div>
+
+      </div>
+    </div>
+</body>
+<script type="module" src="../../js/Transaction/index.js"></script>
+</html>
