@@ -6,6 +6,8 @@
 
 # testing
 /coverage
+.pytest_cache
+/src/databases/.pytest_cache
 
 # database
 /src/databases/-- SQLite.sql
