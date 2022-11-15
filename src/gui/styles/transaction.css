@@ -76,9 +76,15 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    cursor: pointer;
   }
 
   .fa-arrow-down {
+    color: #979797;
+    cursor: pointer;
+  }
+
+  .fa-arrow-up {
     color: #979797;
     cursor: pointer;
   }
