@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RIIL - Edit Product</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="stylesheet" href="../../../styles/edit.css" />
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+
+<body>
+    <div class="container">
+        <div class="sub-container">
+        <div class="title">
+            <img src="../../../../../img/logo-riil-putih.png" class="logo-riil" />
+            <p class="keterangan">Edit Data Produk</p>
+        </div>
+        
+        <div class="contents-row">
+            <p class="input-label">Kategori</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="Makanan" />
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Nama/Merek</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="Indomie Goreng OG" />
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Ukuran</p>
+            <div class="contents-input">
+                <input type="text" class="form-input1" placeholder="50" />
+                <button id="plus" class="plus">+</button>
+                <button id="minus" class="minus">-</button>
+                <select class="form-input2" id="ukuran">
+                    <option value="gr">gr</option>
+                    <option value="kg">kg</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Gambar</p>
+            <div class="contents-input">
+                <div class="form-input">
+                    <input type="file" class="form-input-file" placeholder="Upload file gambar (.jpg/jpeg)" />
+                    <i class="fa fa-file-upload upload-icon" id="iconUpload"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Harga</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="Rp 081914" />
+            </div>
+        </div>    
+        
+        <div class="contents-row">
+            <p class="input-label">Nama Supplier</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="PT aiueo" />
+            </div>
+        </div> 
+
+        <div class="contents-row">
+            <p class="input-label">Nomor Telepon Supplier</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="08123456789"/>
+            </div>
+        </div> 
+
+        <div class="contents-row">
+            <p class="input-label">Kuantitas</p>
+            <div class="contents-input">
+                <input type="text" class="form-input1" placeholder="50" />
+                <button id="plus" class="plus">+</button>
+                <button id="minus" class="minus">-</button>
+                <select class="form-input2" id="kuantitas">
+                    <option value="bungkus">bungkus</option>
+                    <option value="karton">karton</option>
+                </select>
+            </div>
+        </div> 
+        <div class="button-row">
+            <button class="btn-save" id="btn-save">Save</button>
+            <button class="btn-cancel" id="btn-cancel">Cancel</button>
+        </div>
+    </div>
+    
+
+</body>
+
+
+</html>
