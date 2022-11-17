@@ -10,6 +10,7 @@ const productQuantity = document.getElementById('kuantitas');
 const plus_quantity = document.getElementById('plus-kuantitas');
 const minus_quantity = document.getElementById('minus-kuantitas');
 const productSize = document.getElementById('ukuran');
+const productSizeLabel = document.getElementById('ukuran-label')
 const plus_size = document.getElementById('plus-size');
 const minus_size = document.getElementById('minus-size');
 
@@ -59,6 +60,7 @@ const productId = getProductId();
 
 productImage.addEventListener('change', e => {
   labelImage.innerHTML = e.target.value.replace(/.*[\/\\]/, '');
+  console.log(productImage.files[0])
 })
 
 back.setAttribute('href', `../Detail/index.html?id=${productId}`);
@@ -67,11 +69,14 @@ const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId
   .then((response) => response.json())
   .then((data) => { return data[0] });
 
+const sizes = (productData.ukuran).split(' ') 
+
 productName.value = productData.nama;
-productSize.value = productData.kuantitas;
+productSize.value = parseInt(sizes[0]);
+productSizeLabel.value = sizes[1];
 productCategory.value = productData.kategori;
 productPrice.value = productData.harga;
 productQuantity.value = productData.kuantitas;
 productSupplier.value = productData.nama_supplier;
-productPhone.value = productData.no_telp_supplier;
+productPhone.value = productData.no_telp_supplier.replace(62, 0);
 
