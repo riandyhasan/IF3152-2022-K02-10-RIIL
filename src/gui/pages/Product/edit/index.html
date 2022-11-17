@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RIIL - Edit Product</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="stylesheet" href="../../../styles/edit-product.css" />
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+
+<body>
+    <div class="container">
+        <div class="sub-container">
+        <div class="title">
+            <div class="nav-row">
+                <a id="back" style="text-decoration: none; color: white;">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <img src="../../../../../img/logo-riil-putih.png" class="logo-riil" />
+            </div>
+            <p class="keterangan">Edit Data Produk</p>
+        </div>
+        
+        <div class="contents-row">
+            <p class="input-label">Kategori</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="Makanan" id="kategori" />
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Nama/Merek</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="Indomie Goreng OG" id="nama" />
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Ukuran</p>
+            <div class="contents-input">
+                <input type="number" id="ukuran" class="form-input1" placeholder="0" value=0 />
+                <button id="plus-size" class="plus">+</button>
+                <button id="minus-size" class="minus">-</button>
+                <select class="form-input2" id="ukuran">
+                    <option value="gr" style="color: black;">gr</option>
+                    <option value="kg" style="color: black;">kg</option>
+                    <option value="kg" style="color: black;">L</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Gambar</p>
+            <div class="contents-input">
+                <div class="form-input">
+                    <input type="file" accept="image/*" class="form-input-file" id="product-gambar" placeholder="Upload file gambar (.jpg/jpeg)" />
+                    <div style="position: absolute; margin-top: -30px;">
+                        <i class="fa fa-file-upload upload-icon" id="iconUpload"></i>
+                        <label id="label-gambar" class="label-gambar" for="product-gambar">Upload file gambar (.png/.jpg/.jpeg)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Harga</p>
+            <div class="contents-input">
+                <input type="number" class="form-input" placeholder="Rp 081914" id="harga" />
+            </div>
+        </div>    
+        
+        <div class="contents-row">
+            <p class="input-label">Nama Supplier</p>
+            <div class="contents-input">
+                <input type="text" class="form-input" placeholder="PT aiueo" id="supplier" />
+            </div>
+        </div> 
+
+        <div class="contents-row">
+            <p class="input-label">Nomor Telepon Supplier</p>
+            <div class="contents-input">
+                <input type="number" class="form-input" placeholder="08123456789" id="telp"/>
+            </div>
+        </div> 
+
+        <div class="contents-row">
+            <p class="input-label">Kuantitas</p>
+            <div class="contents-input">
+                <input type="number" class="form-input1" placeholder="0" value=0 id="kuantitas" />
+                <button id="plus-kuantitas" class="plus">+</button>
+                <button id="minus-kuantitas" class="minus">-</button>
+            </div>
+        </div> 
+        <div class="button-row">
+            <button class="btn-save" id="btn-save">Save</button>
+            <button class="btn-cancel" id="btn-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/EditProduct/index.js"></script>
+    
+
+</body>
+
+
+</html>
