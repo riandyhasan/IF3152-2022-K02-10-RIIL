@@ -21,6 +21,7 @@ body {
   }
   
   .fa-arrow-left {
+    color: #979797;
     font-size: 25px;
     cursor: pointer;
   }

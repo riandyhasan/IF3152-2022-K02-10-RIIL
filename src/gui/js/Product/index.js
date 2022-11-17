@@ -1,8 +1,11 @@
 const wrapper = document.getElementById('product-wrapper');
 const category = document.getElementById('category-wrapper');
+const see_more_product = document.getElementById('see-more-product');
 let isDown = false;
 let startX;
 let scrollLeft;
+
+const dummy = new Array(20);
 
 const formatRupiah = (angka) => {
   const prefix = "Rp. ";
@@ -34,7 +37,10 @@ productData.forEach((item, i) => {
   const content = `
     <a href="./Detail/index.html?id=${item.id}" style="text-decoration: none;">
     <div class="card" key=${i} id="card-item-${item.id}">
-    <div class="card-image">
+    <div class="${parseInt(item.kuantitas) > 0 ? 'none' : ''} habis-container">
+      <img src="../../../../img/habis.png" alt="Stok Habis" class="habis-icon"/>
+    </div>
+    <div class="card-image ${parseInt(item.kuantitas) > 0 ? '' : 'habis'}">
       <img src="${item.gambar}" />
     </div>
     <div class="card-details">
@@ -52,12 +58,6 @@ productData.forEach((item, i) => {
   </a>
   `;
   wrapper.innerHTML += content;
-});
-
-document.addEventListener('click', e => {
-  if(e.target.id && e.target.id.includes('card-item-')){
-    console.log(e.target.id);
-  }
 });
 
 dummy.forEach((item, i) => {
@@ -83,6 +83,21 @@ const category_left = document.getElementById('category-left');
 const category_right = document.getElementById('category-right');
 // const maxCategoryLeft = category.scrollWidth - category.clientWidth;
 
+see_more_product.addEventListener('click', () => {
+  if(see_more_product.innerHTML == 'Show more'){
+    see_more_product.innerHTML = 'Show less';
+    wrapper.classList.remove('card-wrapper');
+    wrapper.classList.add('card-wrapper-grid');
+    product_right.classList.add('none');
+    product_left.classList.add('none');
+  }else{
+    see_more_product.innerHTML = 'Show more';
+    wrapper.classList.remove('card-wrapper-grid');
+    wrapper.classList.add('card-wrapper');
+    product_right.classList.remove('none');
+    product_left.classList.remove('none');
+  }
+});
 
 wrapper.addEventListener('mousedown', (e) => {
   isDown = true;
