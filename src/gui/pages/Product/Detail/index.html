@@ -13,10 +13,22 @@
 
 <body>
     <div class="container">
+    <div id="delete-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p>Anda yakin ingin menghapus produk?</p>
+            <div class="button-modal">
+                <div class="button-delete">Ya</div>
+                <div class="button-cancel" id="close-modal">Tidak</div>
+            </div>
+        </div>
+        
+    </div>
 
       <div class="nav-row">
         <div style="display:flex; align-items:center; gap: 50px;">
-            <a style="text-decoration: none; color: black;" href="../index.html">
+            <a style="text-decoration: none;" href="../index.html">
                 <i class="fa fa-arrow-left"></i>
             </a>
             <img src="../../../../../img/logo-riil.png" alt="Logo RIIL" class="logo-riil" />
@@ -27,7 +39,7 @@
                     Edit Product
                 </div>
             </a>
-            <div class="nav-button-delete">
+            <div class="nav-button-delete" id="delete-button">
                 Hapus Product
             </div>
         </div>
