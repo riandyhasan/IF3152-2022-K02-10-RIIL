@@ -4,28 +4,60 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-const dummy = [...Array(20).keys()];
+const formatRupiah = (angka) => {
+  const prefix = "Rp. ";
+  var number_string = angka.toString(),
+  split   		= number_string.split(','),
+  sisa     		= split[0].length % 3,
+  rupiah     		= split[0].substr(0, sisa),
+  ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
 
-dummy.forEach((item, i) => {
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if(ribuan){
+    const separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+  return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+}
+
+const productData = await fetch('http://127.0.0.1:5000/get-all-produk')
+  .then((response) => response.json())
+  .then((data) => { return data });
+
+  const showIdx = (idx) => {
+    console.log(idx)
+  }
+
+productData.forEach((item, i) => {
   const content = `
-    <div class="card" key=${i} id="card-${item}"">
+    <a href="./Detail/index.html?id=${item.id}" style="text-decoration: none;">
+    <div class="card" key=${i} id="card-item-${item.id}">
     <div class="card-image">
-      <img src="https://ik.imagekit.io/z83ycl28q/media/catalog/product/cache/206d6ebf3fdb585a5f4836aede302e61/s/i/single_-_tropicana_slim_minyak_kanola.jpg" />
+      <img src="${item.gambar}" />
     </div>
     <div class="card-details">
       <div class="product-name">
-        Minyak Goreng Tropicana Slim Minyak Goreng Tropicana Slim Minyak Goreng Tropicana Slim
+      ${item.nama}
       </div>
       <div class="product-size">
-        2L
+        ${item.ukuran}
       </div>
       <div class="product-price">
-        Rp24.000,00
+        ${formatRupiah(item.harga)}
       </div>
     </div>
   </div>
+  </a>
   `;
   wrapper.innerHTML += content;
+});
+
+document.addEventListener('click', e => {
+  if(e.target.id && e.target.id.includes('card-item-')){
+    console.log(e.target.id);
+  }
 });
 
 dummy.forEach((item, i) => {

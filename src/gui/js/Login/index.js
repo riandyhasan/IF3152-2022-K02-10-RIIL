@@ -23,6 +23,9 @@ password.addEventListener('keypress', e => {
   if(e.key === 'Enter') Login.sendForm(user_password);
 })
 
-fetch('http://127.0.0.1:5000/produk')
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id = urlParams.get('id')
+console.log(id);
+
+
