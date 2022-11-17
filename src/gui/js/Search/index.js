@@ -1,4 +1,5 @@
 const searchWrapper = document.getElementById('search-wrapper');
+const see_more = document.getElementById('see-more');
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -32,6 +33,22 @@ dummy.forEach((item, i) => {
 
 const search_left = document.getElementById('search-left');
 const search_right = document.getElementById('search-right');
+
+see_more.addEventListener('click', () => {
+  if(see_more.innerHTML == 'Show more'){
+    see_more.innerHTML = 'Show less';
+    searchWrapper.classList.remove('card-wrapper');
+    searchWrapper.classList.add('card-wrapper-grid');
+    search_right.classList.add('none');
+    search_left.classList.add('none');
+  }else{
+    see_more.innerHTML = 'Show more';
+    searchWrapper.classList.remove('card-wrapper-grid');
+    searchWrapper.classList.add('card-wrapper');
+    search_right.classList.remove('none');
+    search_left.classList.remove('none');
+  }
+});
 
 
 searchWrapper.addEventListener('mousedown', (e) => {

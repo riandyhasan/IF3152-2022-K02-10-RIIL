@@ -47,5 +47,5 @@ productImage.setAttribute('src', productData.gambar);
 productPrice.innerHTML = formatRupiah(productData.harga);
 productQuantity.innerHTML = productData.kuantitas;
 productSupplier.innerHTML = productData.nama_supplier;
-productPhone.innerHTML = productData.no_telp_supplier;
+productPhone.innerHTML = productData.no_telp_supplier.replace(62, 0);
 
