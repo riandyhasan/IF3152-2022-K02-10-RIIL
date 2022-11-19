@@ -5,9 +5,18 @@ const spawn = require('child_process').spawn;
 
 let win;
 
-const python = spawn('py', ['/src/databases/app.py'])
-python.stdout.on('data', function (data) {
-  console.log("Ada kok")
+const process = spawn('./env/Scripts/python.exe', ['./src/databases/app.py'])
+var responseData = "";
+
+process.stdout.setEncoding('utf-8');
+process.stdout.on('data', function (data){
+    responseData += data.toString();
+});
+process.stderr.on('data', function (data){
+  responseData += data.toString();
+});
+process.stdout.on('end',function(data){
+  console.log(responseData);
 });
 
 function createWindow () {

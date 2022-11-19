@@ -3,6 +3,10 @@ const formList = document.getElementById('items-list');
 const paymentMethond = document.getElementById('metode-pembayaran');
 const totalPrice = document.getElementById('total-price');
 const submit = document.getElementById('btn-submit');
+const modal = document.getElementById("add-modal");
+const modalEmpty = document.getElementById("empty-modal");
+const okEmpty = document.getElementById("empty-ok");
+
 let formListCount = 1;
 var productList = [];
 let currentProduct = document.getElementById('product-1');
@@ -55,10 +59,12 @@ document.addEventListener('click', e => {
     const kuantitas = document.getElementById(`kuantitas-${id_form}`);
     const total = document.getElementById(`total-${id_form}`);
     const price = document.getElementById(`price-${id_form}`);
-    kuantitas.value = parseInt(kuantitas.value) + 1;
-    total.value = parseInt(kuantitas.value) * parseInt(price.value);
-    totalPrice.value = parseInt(totalPrice.value) + parseInt(price.value);
-    changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`)
+    if(getMaxQuantity(`product-${id_form}`) >= parseInt(kuantitas.value) + 1){
+      kuantitas.value = parseInt(kuantitas.value) + 1;
+      total.value = parseInt(kuantitas.value) * parseInt(price.value);
+      totalPrice.value = parseInt(totalPrice.value) + parseInt(price.value);
+      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`)
+    }
   }
   if(e.target.id.includes('minus-')){
     const id_form = e.target.id.replace('minus-', '');
@@ -73,6 +79,15 @@ document.addEventListener('click', e => {
     }
   }
 });
+
+const getMaxQuantity = (product) => {
+  let max = 1;
+  for (var i=0; i < productList.length; i++) {
+    if(productList[i].name === product) max = productList[i].max
+  }
+  return max;
+}
+
 
 const search = (product) => {
   for (var i=0; i < productData.length; i++) {
@@ -110,7 +125,9 @@ document.addEventListener('input', e => {
     const id_form = e.target.id.replace('kuantitas-', '');
     const kuantitas = document.getElementById(`kuantitas-${id_form}`);
     if(kuantitas.value){
+      const max = getMaxQuantity(`product-${id_form}`);
       if(parseInt(kuantitas.value) < 1) kuantitas.value = 1;
+      if(max <  parseInt(kuantitas.value))kuantitas.value = max;
       const total = document.getElementById(`total-${id_form}`);
       const price = document.getElementById(`price-${id_form}`);
       const temp = parseInt(total.value);
@@ -130,20 +147,28 @@ document.addEventListener("click", e => {
     const price = document.getElementById(`price-${pId}`);
     const total = document.getElementById(`total-${pId}`);
     const name = document.getElementById(`product-${pId}`);
-    const kuantitas = document.getElementById(`kuantitas-${pId}`);     
+    const kuantitas = document.getElementById(`kuantitas-${pId}`);   
     if(total.value) totalPrice.value = parseInt(totalPrice.value) - parseInt(total.value);
     name.value = e.target.getAttribute('nama');
     kuantitas.value = 1;
     price.value = parseInt(e.target.getAttribute('harga'));
     total.value = parseInt(e.target.getAttribute('harga'));
+    const max = parseInt(e.target.getAttribute('max'));
     if(totalPrice.value){
       totalPrice.value = parseInt(totalPrice.value) + parseInt(e.target.getAttribute('harga'));
     }else{
       totalPrice.value = parseInt(e.target.getAttribute('harga'));
     }
-    productList.push({ name: currentProduct.id, product_id: parseInt(e.target.getAttribute('productId')), kuantitas: parseInt(kuantitas.value), total_harga: parseInt(total.value) });
+    productList.push({ name: currentProduct.id, product_id: parseInt(e.target.getAttribute('productId')), kuantitas: parseInt(kuantitas.value), total_harga: parseInt(total.value), max: max });
+  }
+  if (e.target == modalEmpty) {
+    modalEmpty.style.display = "none";
   }
 });
+
+okEmpty.addEventListener('click', () => {
+  modalEmpty.style.display = "none";
+})
 
 addBtn.addEventListener('click', () => {
   formListCount += 1;
@@ -159,7 +184,6 @@ const autocomplete = (inp) => {
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
   const id = inp.id;
-  const pId = (id.split('-'))[1];
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", e => {
       var a, b, i;
@@ -177,7 +201,7 @@ const autocomplete = (inp) => {
       /*for each item in the array...*/
       for (i = 0; i < productData.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
-        if (productData[i].nama.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (productData[i].nama.substr(0, val.length).toUpperCase() == val.toUpperCase() && productData[i].kuantitas > 0) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("div");
           /*make the matching letters bold:*/
@@ -188,6 +212,7 @@ const autocomplete = (inp) => {
           b.setAttribute('nama', productData[i].nama);
           b.setAttribute('harga', productData[i].harga);
           b.setAttribute('productId', productData[i].id);
+          b.setAttribute('max', productData[i].kuantitas);
           a.appendChild(b);
         }
       }
@@ -253,16 +278,21 @@ const autocomplete = (inp) => {
 autocomplete(document.getElementById('product-1'));
 
 submit.addEventListener("click", () => {
-  const d = new Date();
-  const waktu = [ d.getFullYear(),d.getMonth()+1, d.getDate()].join('-')+' '+ [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
-  fetch('http://127.0.0.1:5000/add-transaksi', {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ total_pembayaran: parseInt(totalPrice.value), metode_pembayaran: paymentMethond.value, items: productList, waktu: waktu })
-})
-.then(response => response.json())
-.then(response => console.log(response))
-})
+  if(productList.length <= 0) {
+    modalEmpty.style.display = "block";
+  }else{
+    const d = new Date();
+    const waktu = [ d.getFullYear(),d.getMonth()+1, d.getDate()].join('-')+' '+ [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+    fetch('http://127.0.0.1:5000/add-transaksi', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ total_pembayaran: parseInt(totalPrice.value), metode_pembayaran: paymentMethond.value, items: productList, waktu: waktu })
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    modal.style.display = "block";
+  }
+});

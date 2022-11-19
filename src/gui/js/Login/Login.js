@@ -1,4 +1,7 @@
 import { Auth } from "./Auth.js";
+const modalSuccess = document.getElementById("login-success-modal");
+const modalFailed = document.getElementById("login-failed-modal");
+const modalEmpty = document.getElementById("login-empty-modal");
 
 export class Login {
 
@@ -10,16 +13,12 @@ export class Login {
     const validation = Login.validateForm(user_password);
     if(validation){
       if(Auth.validateAuth(user_password)){
-        alert('Login berhasil');
-        window.ipcRender.send('homeShow');
+        modalSuccess.style.display = "block";
       }else{
-        window.ipcRender.send('alertShow', "title");
-        alert('Password salah!');
+        modalFailed.style.display = "block";
       }
     }else{
-      alert('Mohon isi password!');
+      modalEmpty.style.display = "block";
     }
-
   }
-
 }
