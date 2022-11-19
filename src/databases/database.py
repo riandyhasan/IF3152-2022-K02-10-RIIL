@@ -14,7 +14,9 @@ def create_connection():
     dbconn.row_factory = sqlite3.Row
   except Error as e:
     print("Could not connect to database")
-  
+  sql = '''SELECT id from riwayat_transaksi ORDER BY id DESC LIMIT 1'''
+  test = dbconn.execute(sql)
+  print(test)
   if(mydb.exists()):
     print("Database connected")
     return dbconn
