@@ -3,6 +3,15 @@ const sort_up = document.getElementById("sort-up");
 const sort_down = document.getElementById("sort-down");
 const sort_title = document.getElementById("sort-title");
 const table = document.getElementById("table-transaksi");
+const header = `
+<tr>
+    <th>Tanggal</th>
+    <th>Metode Pembayaran</th>
+    <th>Total</th>
+</tr>
+`;
+let contentNewest = header;
+let contentLatest = header;
 
 const formatRupiah = (angka) => {
     const prefix = "Rp. ";
@@ -25,10 +34,12 @@ const formatRupiah = (angka) => {
 sort.addEventListener('click', () => {
     sort_up.classList.toggle("none")
     sort_down.classList.toggle("none")
-    if(sort_up.classList.contains("none")){
+    if(sort_down.classList.contains("none")){
         sort_title.innerHTML = "Sort by Latest";
+        table.innerHTML = contentLatest;
     }else {
         sort_title.innerHTML = "Sort by Newest";
+        table.innerHTML = contentNewest;
     }
   });
 
@@ -45,4 +56,16 @@ transactionData.forEach((item, i) => {
     </tr>
     `;
     table.innerHTML += content;
-  });
+    contentNewest += content;
+});
+
+(transactionData.reverse()).forEach((item, i) => {
+    const content = `
+    <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""}>
+        <td class="item-row col-row-first">${item.waktu}</td>
+        <td class="item-row">${item.metode_pembayaran}</td>
+        <td class="item-row col-row-last">${formatRupiah(item.total_pembayaran)}</td>
+    </tr>
+    `;
+    contentLatest += content;
+});
