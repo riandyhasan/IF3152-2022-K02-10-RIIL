@@ -39,3 +39,23 @@ class Produk(object):
     cur.execute(sql)
     rows = cur.fetchall()
     return json.dumps( [dict(i) for i in rows] )
+
+  def tambahKuantitasProduk(self):
+    sql = f'''UPDATE produk
+              SET kuantitas = kuantitas + {self.data['kuantitas']}
+              WHERE id = {self.data['id']}; '''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    self.db.commit()
+    return json.dumps( [dict(i) for i in rows] )
+  
+  def kurangKuantitasProduk(self):
+    sql = f'''UPDATE produk
+              SET kuantitas = kuantitas - {self.data['kuantitas']}
+              WHERE id = {self.data['id']}; '''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    self.db.commit()
+    return json.dumps( [dict(i) for i in rows] )

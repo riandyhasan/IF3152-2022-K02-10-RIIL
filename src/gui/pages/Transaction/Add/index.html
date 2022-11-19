@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RIIL - Add Transaction</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="stylesheet" href="../../../styles/add-transaction.css" />
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+
+<body>
+    <div class="container">
+        <div class="sub-container">
+        <div class="title">
+            <div class="nav-row">
+                <a style="text-decoration: none; color: white;" href="../index.html">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <img src="../../../../../img/logo-riil-putih.png" class="logo-riil" />
+            </div>
+            <p class="keterangan">Formulir Data Transaksi Baru</p>
+        </div>
+        
+        <div class="contents-row">
+            <p class="input-label">Metode Pembayaran</p>
+            <div class="contents-input">
+                <select type="text" class="form-input" placeholder="Makanan" value="Cash" id="metode-pembayaran">
+                    <option value="Cash" style="color: black;">Cash</option>
+                    <option value="QRIS" style="color: black;">QRIS</option>
+                    <option value="Debit" style="color: black;">Debit</option>
+                    <option value="Kredit" style="color: black;">Kredit</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="contents-row">
+            <p class="input-label">Daftar Produk yang Dibeli</p>
+        </div>
+
+        <div class="items-col"  id="items-list">
+          
+          <div>
+            <div class="items-row">
+
+              <div class="form-wrapper name">
+                <div class="item-form-label">
+                  Nama
+                </div>  
+                <div class="autocomplete" style="width:390px;">
+                  <input type="text" class="item-form" id="product-1" />
+                </div>
+              </div>
+
+              <div class="form-wrapper">
+                <div class="item-form-label">
+                  Kuantitas
+                </div>  
+                <div style="display: flex; width: 100%; align-items: center;">
+                  <div class="plus" id="plus-1">+</div>
+                  <input type="number" class="item-form" value="1" id="kuantitas-1" />
+                  <div class="minus" id="minus-1">-</div>
+                </div>
+              </div>
+
+              <div class="form-wrapper">
+                <div class="item-form-label">
+                  Harga Satuan
+                </div>  
+                <input type="number" class="item-form" placeholder="0" id="price-1" disabled="true" />
+              </div>
+
+              <div class="form-wrapper">
+                <div class="item-form-label">
+                  Harga Total
+                </div>  
+                <input type="number" class="item-form" placeholder="0" id="total-1" disabled="true" />
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      
+        <div style="display: flex; width: 100%; justify-content: center; margin-top: 40px;">
+          <div class="add-item" id="add-item">
+            +
+          </div>
+        </div>
+
+        <div style="display: flex; width: 95%; justify-content: flex-end; align-items: center; margin-top: 40px; gap: 60px;">
+          <div class="item-form-label" style="font-size: 18px;">
+            Harga
+          </div>  
+          <input type="number" class="item-form" style="width: 230px;" id="total-price" disabled="true" value="0" />
+        </div>
+
+        <div class="button-row">
+            <button class="btn-submit" id="btn-submit">Submit</button>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/AddTransaction/index.js"></script>
+    
+
+</body>
+
+
+</html>
