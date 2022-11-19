@@ -6,7 +6,7 @@ class Transaksi(object):
     self.data = data
 
   def getAllTransaksi(self):
-    sql = '''SELECT * FROM riwayat_transaksi'''
+    sql = '''SELECT * FROM riwayat_transaksi ORDER BY waktu DESC'''
     cur = self.db.cursor()
     cur.execute(sql)
     rows = cur.fetchall()
