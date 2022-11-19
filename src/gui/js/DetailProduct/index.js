@@ -7,7 +7,9 @@ const productPhone = document.getElementById('telp');
 const productImage = document.getElementById('product-gambar');
 const productQuantity = document.getElementById('kuantitas');
 const productSize = document.getElementById('ukuran');
-
+const modal = document.getElementById("delete-modal");
+const closeModal = document.getElementById("close-modal");
+const btnDelete = document.getElementById('delete-button');
 
 const getProductId = () => {
   const queryString = new URLSearchParams(window.location.search)
@@ -35,6 +37,20 @@ const formatRupiah = (angka) => {
 const productId = getProductId();
 
 editProduct.setAttribute('href', `../Edit/index.html?id=${productId}`);
+
+btnDelete.addEventListener('click', () => {
+  modal.style.display = "block";
+})
+
+closeModal.addEventListener('click', () => {
+  modal.style.display = "none";
+})
+
+window.addEventListener('click', e => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+});
 
 const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId}`)
   .then((response) => response.json())
