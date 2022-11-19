@@ -29,10 +29,6 @@ const productData = await fetch('http://127.0.0.1:5000/get-all-produk')
   .then((response) => response.json())
   .then((data) => { return data });
 
-  const showIdx = (idx) => {
-    console.log(idx)
-  }
-
 productData.forEach((item, i) => {
   const content = `
     <a href="./Detail/index.html?id=${item.id}" style="text-decoration: none;">
