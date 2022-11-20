@@ -1,6 +1,7 @@
 const wrapper = document.getElementById('product-wrapper');
 const category = document.getElementById('category-wrapper');
 const see_more_product = document.getElementById('see-more-product');
+const IMAGE_PATH = "../../../../img/product";
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -37,7 +38,7 @@ productData.forEach((item, i) => {
       <img src="../../../../img/habis.png" alt="Stok Habis" class="habis-icon"/>
     </div>
     <div class="card-image ${parseInt(item.kuantitas) > 0 ? '' : 'habis'}">
-      <img src="${item.gambar}" />
+      <img src="${item.gambar[0] == '/' ? IMAGE_PATH + item.gambar : item.gambar}" />
     </div>
     <div class="card-details">
       <div class="product-name">

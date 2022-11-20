@@ -59,3 +59,17 @@ class Produk(object):
     rows = cur.fetchall()
     self.db.commit()
     return json.dumps( [dict(i) for i in rows] )
+
+  def addProduk(self):
+    cur = self.db.cursor()
+    sql = '''SELECT id FROM produk ORDER BY id DESC LIMIT 1'''
+    test = (cur.execute(sql)).fetchall()
+    pId = 0
+    for i in test:
+      temp = dict(i)
+      pId = temp['id']
+    sql = f'''INSERT INTO produk (id, nama, harga, gambar, kategori, ukuran, nama_supplier, no_telp_supplier, kuantitas)
+              VALUES ({pId+1}, '{self.data['nama']}', {self.data['harga']}, '{self.data['gambar']}', '{self.data['kategori']}', '{self.data['ukuran']}', '{self.data['supplier']}', {self.data['telp']}, {self.data['kuantitas']});'''
+    cur.execute(sql)
+    self.db.commit()
+    return pId

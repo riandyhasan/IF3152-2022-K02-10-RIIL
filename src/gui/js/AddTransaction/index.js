@@ -185,12 +185,11 @@ const autocomplete = (inp) => {
   var currentFocus;
   const id = inp.id;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", e => {
+  inp.addEventListener("input", () => {
       var a, b, i;
       var val = inp.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
-      if (!val) { return false;}
       currentFocus = -1;
       /*create a DIV element that will contain the items (values):*/
       a = document.createElement("div");
@@ -200,8 +199,57 @@ const autocomplete = (inp) => {
       inp.parentNode.appendChild(a);
       /*for each item in the array...*/
       for (i = 0; i < productData.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (productData[i].nama.substr(0, val.length).toUpperCase() == val.toUpperCase() && productData[i].kuantitas > 0) {
+        if(val == ''){
+          if(productData[i].kuantitas > 0){
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("div");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + productData[i].nama.substr(0, val.length) + "</strong>";
+            b.innerHTML += productData[i].nama.substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.setAttribute('id', `value-${productData[i].id}`);
+            b.setAttribute('nama', productData[i].nama);
+            b.setAttribute('harga', productData[i].harga);
+            b.setAttribute('productId', productData[i].id);
+            b.setAttribute('max', productData[i].kuantitas);
+            a.appendChild(b);
+          }
+        }else{
+          /*check if the item starts with the same letters as the text field value:*/
+          if (productData[i].nama.substr(0, val.length).toUpperCase() == val.toUpperCase() && productData[i].kuantitas > 0) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("div");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + productData[i].nama.substr(0, val.length) + "</strong>";
+            b.innerHTML += productData[i].nama.substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.setAttribute('id', `value-${productData[i].id}`);
+            b.setAttribute('nama', productData[i].nama);
+            b.setAttribute('harga', productData[i].harga);
+            b.setAttribute('productId', productData[i].id);
+            b.setAttribute('max', productData[i].kuantitas);
+            a.appendChild(b);
+          }
+        }
+      }
+  });
+
+  inp.addEventListener("click", () => {
+    var a, b, i;
+    var val = inp.value;
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    currentFocus = -1;
+    /*create a DIV element that will contain the items (values):*/
+    a = document.createElement("div");
+    a.setAttribute("id", id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    /*append the DIV element as a child of the autocomplete container:*/
+    inp.parentNode.appendChild(a);
+    /*for each item in the array...*/
+    if(val == ''){
+      for (i = 0; i < productData.length; i++) {
+        if(productData[i].kuantitas > 0){
           /*create a DIV element for each matching element:*/
           b = document.createElement("div");
           /*make the matching letters bold:*/
@@ -216,7 +264,9 @@ const autocomplete = (inp) => {
           a.appendChild(b);
         }
       }
-  });
+    }
+});
+
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", e => {
       var x = document.getElementById(id + "autocomplete-list");

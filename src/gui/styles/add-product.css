@@ -1,0 +1,240 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter';
+    color: white;
+    background: linear-gradient(180deg, #102847 0%, #4A6E8B 100%);
+    overflow-x: hidden;
+}
+
+.title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    height: 100%;
+    width: 100vw;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 35vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(3px);
+  }
+  
+  .modal-content {
+    background: #D9D9D9;
+    border-radius: 15px;
+    margin: auto;
+    padding: 50px 20px;
+    border: none;
+    width: 500px;
+  }
+  
+  .modal-content p {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+  }
+  
+  .button-modal {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .button-ok {
+    width: 100px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    color: black;
+  }
+
+.sub-container {
+    width: 100%
+}
+
+.nav-row {
+    width: 55%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-left: 5%;
+  }
+  
+  .fa-arrow-left {
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+.logo-riil {
+    width: 200px;
+    justify-items: center;
+}
+
+.keterangan{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+
+}
+
+.contents-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+
+    margin-left: 40px;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 8px;
+}
+
+::placeholder{
+    color: #FFFFFF;
+}
+
+.form-input {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    width: 500px;
+    height: 40px;
+    border: none;
+    padding-left: 10px;
+}
+
+.form-input1 {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    width: 295px;
+    height: 40px;
+    border: none;
+    padding-left: 10px;
+}
+
+.form-input2 {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    width: 200px;
+    height: 42px;
+    border: none;
+    padding-left: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+.plus {
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: #D9D9D9;
+    font-size: 30px;
+    margin-left: -300px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.minus {
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: #D9D9D9;
+    font-size: 30px;
+    margin-left: -35px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.form-input-file {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.contents-input {
+    margin-top: 0px;
+    margin-bottom: 0px;      
+}
+
+.upload-icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.label-gambar {
+    margin-left: 20px;
+    font-size: 13px;
+    cursor: pointer;   
+}
+
+.button-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.btn-submit {
+    width: 300px;
+    height: 40px;
+
+    background: #000000;
+    color: white;
+    border-radius: 10px;
+
+    font-weight: bold;
+    font-size: 15px;
+
+    border: none;
+
+    cursor: pointer;
+}

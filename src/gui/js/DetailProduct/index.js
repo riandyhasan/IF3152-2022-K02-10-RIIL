@@ -10,6 +10,7 @@ const productSize = document.getElementById('ukuran');
 const modal = document.getElementById("delete-modal");
 const closeModal = document.getElementById("close-modal");
 const btnDelete = document.getElementById('delete-button');
+const IMAGE_PATH = "../../../../../img/product";
 
 const getProductId = () => {
   const queryString = new URLSearchParams(window.location.search)
@@ -59,7 +60,7 @@ const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId
 productName.innerHTML = productData.nama;
 productSize.innerHTML = productData.ukuran;
 productCategory.innerHTML = productData.kategori;
-productImage.setAttribute('src', productData.gambar);
+productImage.setAttribute('src', productData.gambar[0] == '/' ? IMAGE_PATH + productData.gambar : productData.gambar);
 productPrice.innerHTML = formatRupiah(productData.harga);
 productQuantity.innerHTML = productData.kuantitas;
 productSupplier.innerHTML = productData.nama_supplier;

@@ -1,23 +1,51 @@
 const { app, BrowserWindow, dialog } = require('electron')
 const electronIpcMain = require('electron').ipcMain;
 const path = require('path')
-const spawn = require('child_process').spawn;
+// const spawn = require('child_process').spawn;
+const {PythonShell} =require('python-shell');
 
 let win;
 
-const process = spawn('./env/Scripts/python.exe', ['./src/databases/app.py'])
-var responseData = "";
+const options = {
+  mode: 'text',
+  pythonPath: './env/Scripts/python.exe',
+  pythonOptions: ['-u'],
+  scriptPath: './src/databases/',
+};
 
-process.stdout.setEncoding('utf-8');
-process.stdout.on('data', function (data){
-    responseData += data.toString();
+const pyshell = PythonShell.run('app.py', options, function (err, results) {
+  if (err) 
+    throw err;
+  // Results is an array consisting of messages collected during execution
+  console.log('results: %j', results);
 });
-process.stderr.on('data', function (data){
-  responseData += data.toString();
+
+pyshell.on('message', function (message) {
+  // received a message sent from the Python script (a simple "print" statement)
+  console.log(message);
 });
-process.stdout.on('end',function(data){
-  console.log(responseData);
+
+// end the input stream and allow the process to exit
+pyshell.end(function (err,code,signal) {
+  if (err) throw err;
+  console.log('The exit code was: ' + code);
+  console.log('The exit signal was: ' + signal);
+  console.log('finished');
 });
+
+// const process = spawn('./env/Scripts/python.exe', ['./src/databases/app.py'])
+// var responseData = "";
+
+// process.stdout.setEncoding('utf-8');
+// process.stdout.on('data', function (data){
+//     responseData += data.toString();
+// });
+// process.stderr.on('data', function (data){
+//   responseData += data.toString();
+// });
+// process.stdout.on('end',function(data){
+//   console.log(responseData);
+// });
 
 function createWindow () {
   win = new BrowserWindow({

@@ -1,5 +1,6 @@
 const searchWrapper = document.getElementById('search-wrapper');
 const see_more = document.getElementById('see-more');
+const IMAGE_PATH = "../../../../../img/product";
 let isDown = false;
 let startX;
 let scrollLeft;

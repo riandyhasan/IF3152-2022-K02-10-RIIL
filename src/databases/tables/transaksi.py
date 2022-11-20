@@ -23,6 +23,5 @@ class Transaksi(object):
     sql = f'''INSERT INTO riwayat_transaksi (id, waktu, total_pembayaran, metode_pembayaran)
               VALUES ({tId+1}, '{self.data['waktu']}', {self.data['total_pembayaran']}, '{self.data['metode_pembayaran']}')'''
     cur.execute(sql)
-    rows = cur.fetchall()
     self.db.commit()
     return tId
