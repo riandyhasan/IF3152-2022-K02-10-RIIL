@@ -73,6 +73,25 @@ def get_all_transaksi():
     data = transaksi.getAllTransaksi()
     return data
 
+@app.route("/get-sales", methods=['GET'])
+@cross_origin()
+def get_sales():
+    kategori = request.args.get('category')
+    if kategori:
+        produk = pd.Produk(dbconn, kategori)
+        data = produk.getProdukSalesByCategory()
+    else:
+        produk = pd.Produk(dbconn, "")
+        data = produk.getAllProdukSales()
+    return data
+
+@app.route("/get-sales-by-payment", methods=['GET'])
+@cross_origin()
+def get_payment_method():
+    transaksi = ts.Transaksi(dbconn, "")
+    data = transaksi.getTransaksiByMetodePembayaran()
+    return data
+
 @app.route("/add-produk", methods=["POST", "OPTIONS"])
 @cross_origin()
 def add_product():

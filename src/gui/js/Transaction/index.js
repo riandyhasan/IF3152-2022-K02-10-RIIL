@@ -82,7 +82,6 @@ const getItemData = async (id) => {
 
 document.addEventListener('click', async e => {
   if(e.target.classList.contains('item-row') && e.target.getAttribute('id')){
-    console.log(e.target)
     const modalHeader = `
     <tr>
       <th>Produk</th>
@@ -94,7 +93,6 @@ document.addEventListener('click', async e => {
     const items = await fetch(`http://127.0.0.1:5000/get-item-transaksi?id=${e.target.getAttribute('id')}`)
     .then((response) => response.json())
     .then((data) => { return data });
-    console.log(items);
     items.forEach((item, i) => {
       const content = `
       <tr key="${i}">

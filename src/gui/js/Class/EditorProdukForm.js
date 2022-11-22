@@ -1,5 +1,8 @@
+/* istanbul ignore next */ 
 const addModal = document.getElementById('add-modal');
+/* istanbul ignore next */ 
 const editModal = document.getElementById('edit-modal');
+/* istanbul ignore next */ 
 const emptyModal = document.getElementById('empty-modal');
 
 export class EditorProdukForm {
@@ -18,10 +21,6 @@ export class EditorProdukForm {
       if(query == 'add') {
         await fetch('http://127.0.0.1:5000/add-produk', {
         method: "POST",
-        headers: {
-          'Host': 'http://127.0.0.1:5000',
-          'Origin': 'http://127.0.0.1:5500/',
-        },
         body: formData})
         .then(response => response.json())
         .then(response => addModal.style.display = "block")
@@ -31,8 +30,6 @@ export class EditorProdukForm {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Host': 'http://127.0.0.1:5000',
-            'Origin': 'http://127.0.0.1:5500/',
           },
           body: JSON.stringify(this.dataProduk)
         })
