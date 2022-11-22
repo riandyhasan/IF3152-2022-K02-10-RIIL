@@ -3,6 +3,9 @@ const sort_up = document.getElementById("sort-up");
 const sort_down = document.getElementById("sort-down");
 const sort_title = document.getElementById("sort-title");
 const table = document.getElementById("table-transaksi");
+const modal = document.getElementById("modal");
+const itemContent = document.getElementById("item-content");
+const modalContent = document.getElementById("modal-content");
 const header = `
 <tr>
     <th>Tanggal</th>
@@ -49,10 +52,10 @@ const transactionData = await fetch('http://127.0.0.1:5000/get-all-transaksi')
 
 transactionData.forEach((item, i) => {
     const content = `
-    <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""}>
-        <td class="item-row col-row-first">${item.waktu}</td>
-        <td class="item-row">${item.metode_pembayaran}</td>
-        <td class="item-row col-row-last">${formatRupiah(item.total_pembayaran)}</td>
+    <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""} style="cursor: pointer;">
+        <td class="item-row col-row-first" id=${item.id}>${item.waktu}</td>
+        <td class="item-row" id=${item.id}>${item.metode_pembayaran}</td>
+        <td class="item-row col-row-last" id=${item.id}>${formatRupiah(item.total_pembayaran)}</td>
     </tr>
     `;
     table.innerHTML += content;
@@ -61,11 +64,51 @@ transactionData.forEach((item, i) => {
 
 (transactionData.reverse()).forEach((item, i) => {
     const content = `
-    <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""}>
-        <td class="item-row col-row-first">${item.waktu}</td>
-        <td class="item-row">${item.metode_pembayaran}</td>
-        <td class="item-row col-row-last">${formatRupiah(item.total_pembayaran)}</td>
+    <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""} style="cursor: pointer;">
+        <td class="item-row col-row-first" id=${item.id}>${item.waktu}</td>
+        <td class="item-row" id=${item.id}>${item.metode_pembayaran}</td>
+        <td class="item-row col-row-last" id=${item.id}>${formatRupiah(item.total_pembayaran)}</td>
     </tr>
     `;
     contentLatest += content;
 });
+
+const getItemData = async (id) => {
+  const data = await fetch(`http://127.0.0.1:5000/get-item-transaksi?id=${id}`)
+  .then((response) => response.json())
+  .then((data) => { return data });
+  return data
+}
+
+document.addEventListener('click', async e => {
+  if(e.target.classList.contains('item-row') && e.target.getAttribute('id')){
+    console.log(e.target)
+    const modalHeader = `
+    <tr>
+      <th>Produk</th>
+      <th>Kuantitas</th>
+      <th>Total Harga</th>
+    </tr>
+    `;
+    itemContent.innerHTML = modalHeader;
+    const items = await fetch(`http://127.0.0.1:5000/get-item-transaksi?id=${e.target.getAttribute('id')}`)
+    .then((response) => response.json())
+    .then((data) => { return data });
+    console.log(items);
+    items.forEach((item, i) => {
+      const content = `
+      <tr key="${i}">
+          <td class="item-row col-row-first">${item.nama}</td>
+          <td class="item-row">${item.kuantitas}</td>
+          <td class="item-row col-row-last">${item.total}</td>
+      </tr>
+      `;
+      itemContent.innerHTML += content;
+    })
+    modal.style.display = 'block';
+  }
+  if(e.target == modal || e.target.id == 'ok-modal'){
+    modal.style.display = 'none';
+    itemContent.innerHTML = '';
+  }
+})

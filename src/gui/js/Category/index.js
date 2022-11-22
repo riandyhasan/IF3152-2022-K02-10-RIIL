@@ -10,7 +10,7 @@ let scrollLeft;
 
 const getQuery = () => {
   const queryString = new URLSearchParams(window.location.search)
-  return queryString.get('q')
+  return queryString.get('category')
 }
 
 const formatRupiah = (angka) => {
@@ -30,8 +30,7 @@ const formatRupiah = (angka) => {
   rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
   return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
 }
-
-const productData = await fetch(`http://127.0.0.1:5000/get-produk?q=${getQuery()}`)
+const productData = await fetch(`http://127.0.0.1:5000/get-produk?category=${getQuery()}`)
   .then((response) => response.json())
   .then((data) => { return data });
 
