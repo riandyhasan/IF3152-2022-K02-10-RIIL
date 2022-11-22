@@ -8,7 +8,7 @@ let win;
 
 const options = {
   mode: 'text',
-  pythonPath: './env/Scripts/python.exe',
+  pythonPath: process.platform == 'win32' || process.platform == 'win64' ? '.env/Scripts/python.exe' : './env/bin/python3.9',
   pythonOptions: ['-u'],
   scriptPath: './src/databases/',
 };
