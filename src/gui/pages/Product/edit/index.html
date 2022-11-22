@@ -11,6 +11,21 @@
 
 <body>
     <div class="container">
+
+        <div id="edit-modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p>Berhasil mengedit produk!</p>
+                <div class="button-modal">
+                    <a id="back-submit" style="text-decoration: none;" href="../index.html">
+                        <div class="button-ok">Ok</div>
+                    </a>
+                </div>
+            </div>
+    
+           </div>
+    
         <div class="sub-container">
         <div class="title">
             <div class="nav-row">
@@ -51,7 +66,8 @@
                 <select class="form-input2" id="ukuran-label">
                     <option value="gr" style="color: black;">gr</option>
                     <option value="kg" style="color: black;">kg</option>
-                    <option value="kg" style="color: black;">L</option>
+                    <option value="L" style="color: black;">L</option>
+                    <option value="ml" style="color: black;">ml</option>
                 </select>
             </div>
         </div>
@@ -100,7 +116,9 @@
         </div> 
         <div class="button-row">
             <button class="btn-save" id="btn-save">Save</button>
-            <button class="btn-cancel" id="btn-cancel">Cancel</button>
+            <a id="cancel" style="text-decoration: none;">
+                <button class="btn-cancel" id="btn-cancel">Cancel</button>
+            </a>
         </div>
     </div>
 

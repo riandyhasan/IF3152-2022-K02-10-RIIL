@@ -24,4 +24,4 @@ class Transaksi(object):
               VALUES ({tId+1}, '{self.data['waktu']}', {self.data['total_pembayaran']}, '{self.data['metode_pembayaran']}')'''
     cur.execute(sql)
     self.db.commit()
-    return tId
+    return tId+1

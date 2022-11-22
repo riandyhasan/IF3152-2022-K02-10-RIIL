@@ -1,12 +1,14 @@
 const wrapper = document.getElementById('product-wrapper');
 const category = document.getElementById('category-wrapper');
 const see_more_product = document.getElementById('see-more-product');
+const see_more_category = document.getElementById('see-more-category');
 const IMAGE_PATH = "../../../../img/product";
+const IMAGE_CATEGORY = "../../../../img/category/"
 let isDown = false;
 let startX;
 let scrollLeft;
 
-const dummy = new Array(20);
+const CATEGORY = ["Makanan", "Minuman", "Sembako", "Produk Kecantikan", "Alat Mandi"];
 
 const formatRupiah = (angka) => {
   const prefix = "Rp. ";
@@ -57,18 +59,20 @@ productData.forEach((item, i) => {
   wrapper.innerHTML += content;
 });
 
-dummy.forEach((item, i) => {
+CATEGORY.forEach((item, i) => {
   const content = `
+  <a href="./Category/index.html?category=${item}" style="text-decoration: none;">
     <div class="card" key=${i} id="card-${item}"">
     <div class="card-image">
-      <img src="https://ik.imagekit.io/z83ycl28q/media/catalog/product/cache/206d6ebf3fdb585a5f4836aede302e61/s/i/single_-_tropicana_slim_minyak_kanola.jpg" />
+      <img src="${IMAGE_CATEGORY + item + '.png'}" />
     </div>
     <div class="category-details">
       <div class="category-name">
-        Makanan
+        ${item}
       </div>
     </div>
   </div>
+  </a>
   `;
   category.innerHTML += content;
 });
@@ -148,4 +152,20 @@ category_right.addEventListener('click', () => {
 
 category_left.addEventListener('click', () => {
   category.scrollLeft -= 1000;
+});
+
+see_more_category.addEventListener('click', () => {
+  if(see_more_category.innerHTML == 'Show more'){
+    see_more_category.innerHTML = 'Show less';
+    category.classList.remove('card-wrapper');
+    category.classList.add('card-wrapper-grid');
+    category_right.classList.add('none');
+    category_left.classList.add('none');
+  }else{
+    see_more_category.innerHTML = 'Show more';
+    category.classList.remove('card-wrapper-grid');
+    category.classList.add('card-wrapper');
+    category_right.classList.remove('none');
+    category_left.classList.remove('none');
+  }
 });

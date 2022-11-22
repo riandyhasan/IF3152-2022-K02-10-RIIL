@@ -9,7 +9,9 @@ const productQuantity = document.getElementById('kuantitas');
 const productSize = document.getElementById('ukuran');
 const modal = document.getElementById("delete-modal");
 const closeModal = document.getElementById("close-modal");
+const delete_btn = document.getElementById("delete");
 const btnDelete = document.getElementById('delete-button');
+const back = document.getElementById("back");
 const IMAGE_PATH = "../../../../../img/product";
 
 const getProductId = () => {
@@ -47,6 +49,17 @@ closeModal.addEventListener('click', () => {
   modal.style.display = "none";
 })
 
+const confirmDelete = async () => {
+  await fetch(`http://127.0.0.1:5000/delete-produk?id=${productId}`, { method: "DELETE" })
+  .then((response) => response.json())
+  .then(() => console.log(response))
+}
+
+delete_btn.addEventListener('click', () => {
+  confirmDelete()
+  back.click();
+})
+
 window.addEventListener('click', e => {
   if (e.target == modal) {
     modal.style.display = "none";
@@ -64,5 +77,5 @@ productImage.setAttribute('src', productData.gambar[0] == '/' ? IMAGE_PATH + pro
 productPrice.innerHTML = formatRupiah(productData.harga);
 productQuantity.innerHTML = productData.kuantitas;
 productSupplier.innerHTML = productData.nama_supplier;
-productPhone.innerHTML = productData.no_telp_supplier.replace(62, 0);
+productPhone.innerHTML = ((productData.no_telp_supplier).toString()).replace('62', '0');
 

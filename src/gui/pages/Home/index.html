@@ -20,8 +20,8 @@
       <div class="content">
       <img src="../../../../img/logo-riil.png" class="logo-riil" />
       <div class="search-bar">
-        <input type="text" class="form-search" placeholder="Search your product" />
-        <a href="../Product/Search/index.html">
+        <input type="text" class="form-search" placeholder="Search your product" id="search-bar" />
+        <a id="search">
           <i class="fa fa-search search-icon"></i>
         </a>
         
@@ -61,5 +61,22 @@
 
     </div>
 </body>
+<script>
+  const search = document.getElementById('search');
+  const searchBar = document.getElementById('search-bar');
+  
+  searchBar.addEventListener('keypress', e => {
+    if(e.key === 'Enter'){
+      search.setAttribute('href', "../Product/Search/index.html?q=" + searchBar.value)
+      search.click()
+    }
+  })
+
+  search.addEventListener('click', () => {
+    search.setAttribute('href', "../Product/Search/index.html?q=" + searchBar.value)
+    search.click()
+  })
+
+</script>
 
 </html>

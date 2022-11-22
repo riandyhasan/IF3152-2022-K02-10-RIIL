@@ -12,6 +12,13 @@ class ItemTransaksi(object):
     rows = cur.fetchall()
     return json.dumps( [dict(i) for i in rows] )
   
+  def getItemTransaksi(self):
+    sql = f'''SELECT * FROM item_transaksi WHERE transaksi = {self.data}'''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    return json.dumps( [dict(i) for i in rows] )
+  
   def addItemTransaksi(self):
     cur = self.db.cursor()
     sql = '''SELECT id from item_transaksi ORDER BY id DESC LIMIT 1'''
