@@ -1,4 +1,4 @@
-import { Login } from "./Login.js";
+import { Login } from "../Class/Login.js";
 
 const togglePassword = document.querySelector('#togglePassword');
 const buttonLogin = document.querySelector('#btn-login');
@@ -43,9 +43,5 @@ window.addEventListener('click', e => {
     modalEmpty.style.display = "none";
   }
 });
-
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id')
 
 

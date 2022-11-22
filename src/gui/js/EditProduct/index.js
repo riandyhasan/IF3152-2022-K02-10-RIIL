@@ -1,4 +1,8 @@
+import { EditorProdukForm } from "../Class/EditorProdukForm.js";
+
 const back = document.getElementById('back');
+const back_submit = document.getElementById('back-submit')
+const cancel = document.getElementById('cancel');
 const productName = document.getElementById('nama');
 const productCategory = document.getElementById('kategori');
 const productPrice = document.getElementById('harga');
@@ -13,7 +17,8 @@ const productSize = document.getElementById('ukuran');
 const productSizeLabel = document.getElementById('ukuran-label')
 const plus_size = document.getElementById('plus-size');
 const minus_size = document.getElementById('minus-size');
-
+const save = document.getElementById('btn-save');
+let currentGambar;
 
 const getProductId = () => {
   const queryString = new URLSearchParams(window.location.search)
@@ -64,6 +69,8 @@ productImage.addEventListener('change', e => {
 })
 
 back.setAttribute('href', `../Detail/index.html?id=${productId}`);
+cancel.setAttribute('href', `../Detail/index.html?id=${productId}`);
+back_submit.setAttribute('href', `../Detail/index.html?id=${productId}`);
 
 const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId}`)
   .then((response) => response.json())
@@ -72,11 +79,32 @@ const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId
 const sizes = (productData.ukuran).split(' ') 
 
 productName.value = productData.nama;
+productImage.placeholder = productData.gambar;
+currentGambar = productData.gambar;
 productSize.value = parseInt(sizes[0]);
 productSizeLabel.value = sizes[1];
 productCategory.value = productData.kategori;
 productPrice.value = productData.harga;
 productQuantity.value = productData.kuantitas;
 productSupplier.value = productData.nama_supplier;
-productPhone.value = productData.no_telp_supplier.replace(62, 0);
+productPhone.value = ((productData.no_telp_supplier).toString()).replace('62', '0');
 
+const editProduk = async (data) => {
+  const editor = new EditorProdukForm(data);
+  await editor.sendForm('edit');
+}
+
+save.addEventListener('click', () => {
+  const data = { 
+    id: productId,
+    nama: productName.value ?? '', 
+    kategori: productCategory.value ?? '', 
+    ukuran: productSize.value + " " + productSizeLabel.value ?? '',
+    harga: parseInt(productPrice.value) ?? '',
+    supplier: productSupplier.value ?? '',
+    telp: productPhone.value[0] == '0' ? parseInt('62' + productPhone.value.substring(1)) : parseInt(productPhone.value),
+    kuantitas: parseInt(productQuantity.value) ?? '',
+    gambar: currentGambar,
+  }
+  editProduk(data);
+});

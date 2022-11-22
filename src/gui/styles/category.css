@@ -1,0 +1,231 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Inter";
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav-row {
+  width: 100%;
+  padding: 30px 0px 30px 40px;
+  align-items: center;
+  display: flex;
+  gap: 50px;
+}
+
+.nav-row a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.fa-arrow-left {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.logo-riil{
+  width:250px;
+  margin-top: -20px;
+}
+
+.add-product {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button {
+  background: rgba(217, 217, 217, 0.37);
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-button p {
+  font-weight: 700;
+  font-size: 20px;
+  color: #979797;
+  margin:10px;
+}
+
+.fa-plus {
+  font-size: 25px;
+  color: #C2C2C2;
+}
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px 30px 70px;
+}
+
+.search-subtitle {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.search-subtitle a {
+  text-decoration: none;
+}
+
+.search-type {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.see-more {
+  font-weight: 500;
+  font-size: 20px;
+  color: #979797;
+  cursor: pointer;
+}
+
+.card-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  margin-top: 30px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scroll-behavior: smooth;
+}
+
+.card-wrapper-grid {
+  display: grid;
+  width: 100%;
+  gap: 30px;
+  margin-top: 30px;
+  grid-template-columns: auto auto auto auto;
+}
+
+.card-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px 30px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  width: 180px;
+  height: 240px;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 150px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.search-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.search-size {
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.41);
+}
+
+.search-price {
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.41);
+}
+
+
+.fa-arrow-circle-right {
+  position: absolute;
+  right: 30px;
+  margin-top: 140px;
+  font-size: 50px;
+  color: #F4F4F4;
+  background-color: #979797;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+  border: none;
+  z-index: 100;
+}
+
+.fa-arrow-circle-left {
+  position: absolute;
+  left: 30px;
+  margin-top: 140px;
+  font-size: 50px;
+  color: #F4F4F4;
+  background-color: #979797;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+  border: none;
+  z-index: 100;
+}
+
+.none {
+  display: none !important;
+}
+
+.habis-icon {
+  width: 100px;
+}
+
+.habis-container {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.habis {
+  /* opacity: 0.6;
+  filter: alpha(60); */
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+       -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+          filter: grayscale(100%); 
+}

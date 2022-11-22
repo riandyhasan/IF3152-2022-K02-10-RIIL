@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>RIIL - Edit Product</title>
+        <title>RIIL - Add Product</title>
         <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-        <link rel="stylesheet" href="../../../styles/edit-product.css" />
+        <link rel="stylesheet" href="../../../styles/add-product.css" />
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     </head>
@@ -12,13 +12,13 @@
 <body>
     <div class="container">
 
-        <div id="edit-modal" class="modal">
+        <div id="add-modal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">
-                <p>Berhasil mengedit produk!</p>
+                <p>Berhasil menambahkan produk!</p>
                 <div class="button-modal">
-                    <a id="back-submit" style="text-decoration: none;" href="../index.html">
+                    <a style="text-decoration: none;" href="../index.html">
                         <div class="button-ok">Ok</div>
                     </a>
                 </div>
@@ -26,21 +26,33 @@
     
            </div>
     
+           <div id="empty-modal" class="modal">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p>Mohon lengkapi form!</p>
+                <div class="button-modal">
+                    <div class="button-ok" id="empty-ok">Ok</div>
+                </div>
+            </div>
+    
+           </div>
+
         <div class="sub-container">
         <div class="title">
             <div class="nav-row">
-                <a id="back" style="text-decoration: none; color: white;">
+                <a style="text-decoration: none; color: white;" href="../index.html">
                     <i class="fa fa-arrow-left"></i>
                 </a>
                 <img src="../../../../../img/logo-riil-putih.png" class="logo-riil" />
             </div>
-            <p class="keterangan">Edit Data Produk</p>
+            <p class="keterangan">Formulir Data Produk Baru</p>
         </div>
         
         <div class="contents-row">
             <p class="input-label">Kategori</p>
             <div class="contents-input">
-                <select type="text" class="form-input" placeholder="Makanan" id="kategori">
+                <select type="text" class="form-input" placeholder="Makanan" id="kategori" value="Makanan">
                     <option value="Makanan" style="color: black;">Makanan</option>
                     <option value="Minuman" style="color: black;">Minuman</option>
                     <option value="Sembako" style="color: black;">Sembako</option>
@@ -53,21 +65,21 @@
         <div class="contents-row">
             <p class="input-label">Nama/Merek</p>
             <div class="contents-input">
-                <input type="text" class="form-input" placeholder="Indomie Goreng OG" id="nama" />
+                <input type="text" class="form-input" id="nama" />
             </div>
         </div>
 
         <div class="contents-row">
             <p class="input-label">Ukuran</p>
             <div class="contents-input">
-                <input type="number" id="ukuran" class="form-input1" placeholder="0" value=0 />
+                <input type="number" id="ukuran" class="form-input1" placeholder="0" value="0" />
                 <button id="plus-size" class="plus">+</button>
                 <button id="minus-size" class="minus">-</button>
-                <select class="form-input2" id="ukuran-label">
+                <select class="form-input2" id="ukuran-label" value="gr">
                     <option value="gr" style="color: black;">gr</option>
                     <option value="kg" style="color: black;">kg</option>
-                    <option value="L" style="color: black;">L</option>
                     <option value="ml" style="color: black;">ml</option>
+                    <option value="L" style="color: black;">L</option>
                 </select>
             </div>
         </div>
@@ -88,21 +100,21 @@
         <div class="contents-row">
             <p class="input-label">Harga</p>
             <div class="contents-input">
-                <input type="number" class="form-input" placeholder="Rp 081914" id="harga" />
+                <input type="number" class="form-input" id="harga" />
             </div>
         </div>    
         
         <div class="contents-row">
             <p class="input-label">Nama Supplier</p>
             <div class="contents-input">
-                <input type="text" class="form-input" placeholder="PT aiueo" id="supplier" />
+                <input type="text" class="form-input"id="supplier" />
             </div>
         </div> 
 
         <div class="contents-row">
             <p class="input-label">Nomor Telepon Supplier</p>
             <div class="contents-input">
-                <input type="number" class="form-input" placeholder="08123456789" id="telp"/>
+                <input type="number" class="form-input"  id="telp"/>
             </div>
         </div> 
 
@@ -115,14 +127,11 @@
             </div>
         </div> 
         <div class="button-row">
-            <button class="btn-save" id="btn-save">Save</button>
-            <a id="cancel" style="text-decoration: none;">
-                <button class="btn-cancel" id="btn-cancel">Cancel</button>
-            </a>
+            <button class="btn-submit" id="btn-submit">Submit</button>
         </div>
     </div>
 
-    <script type="module" src="../../../js/EditProduct/index.js"></script>
+    <script type="module" src="../../../js/AddProduct/index.js"></script>
     
 
 </body>
