@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RIIL - New Product Form</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="stylesheet" href="../../styles/productform.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="subcontainer">
+            <div class="title">
+                <img src="../../assets/logo-riil-putih.png" alt="logo-riil-putih" class="logo" />
+                <p>Formulir Data Produk Baru</p>
+                <a href="../../Home/index.html">
+                    <i class="arrow-left"></i>
+                </a>
+            </div>
+
+            <div class="form">
+                <p>Kategori</p>
+                <input class="input-form">
+            </div>
+
+            <div class="form">
+                <p>Nama/Merek</p>
+                <input class="input-form">
+            </div>
+
+            <div class="form">
+                <p>Ukuran</p>
+                <button id="plus" class="plus">+</button>
+                <input type="text" class="input-form-size-qty">
+                <button id="minus" class="minus">-</button>
+                <select class="input-form-size-qty"> </select>
+            </div>
+
+            <div class="form">
+                <p>Gambar</p>
+                <input class="input-form-picture" placeholder="Upload file gambar (.jpg/.jpeg)"/>
+                <i class="fa fa-file-upload upload-icon" id="iconUpload"></i>
+            </div>
+
+            <div class="form">
+                <p>Harga</p>
+                <input type="text" class="input-form">
+            </div>
+
+            <div class="form">
+                <p>Nama Supplier</p>
+                <input type="text" class="input-form">
+            </div>
+
+            <div class="form">
+                <p>Nomor Telepon Supplier</p>
+                <input type="text" class="input-form">
+            </div>
+
+            <div class="form">
+                <p>Kuantitas</p>
+                <button id="plus" class="plus">+</button>
+                <input type="text" class="input-form-size-qty">
+                <button id="minus" class="minus">-</button>
+                <select class="input-form-size-qty"> </select>
+            </div>
+            <div class="submit">
+                <button class="button-submit">Submit</button>
+            </div>     
+        </div>
+    </div>
+</body>
+</html>
