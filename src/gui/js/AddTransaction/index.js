@@ -1,3 +1,5 @@
+import { EditorTransaksiForm } from "../Class/EditorTransaksiForm.js";
+
 const addBtn = document.getElementById('add-item');
 const formList = document.getElementById('items-list');
 const paymentMethond = document.getElementById('metode-pembayaran');
@@ -63,7 +65,8 @@ document.addEventListener('click', e => {
       kuantitas.value = parseInt(kuantitas.value) + 1;
       total.value = parseInt(kuantitas.value) * parseInt(price.value);
       totalPrice.value = parseInt(totalPrice.value) + parseInt(price.value);
-      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`)
+      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`);
+      changeTotalHarga(parseInt(total.value), `product-${id_form}`);
     }
   }
   if(e.target.id.includes('minus-')){
@@ -75,7 +78,8 @@ document.addEventListener('click', e => {
       kuantitas.value = parseInt(kuantitas.value) - 1;
       total.value = parseInt(kuantitas.value) * parseInt(price.value);
       totalPrice.value = parseInt(totalPrice.value) - parseInt(price.value);
-      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`)
+      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`);
+      changeTotalHarga(parseInt(total.value), `product-${id_form}`);
     }
   }
 });
@@ -100,6 +104,14 @@ const changeKuantitas = (kuantitas, product) => {
   for (var i=0; i < productList.length; i++) {
     if(productList[i].name === product){
       productList[i].kuantitas = kuantitas;
+    }
+  }
+}
+
+const changeTotalHarga = (harga, product) => {
+  for (var i=0; i < productList.length; i++) {
+    if(productList[i].name === product){
+      productList[i].total_harga = harga;
     }
   }
 }
@@ -133,7 +145,8 @@ document.addEventListener('input', e => {
       const temp = parseInt(total.value);
       total.value = parseInt(kuantitas.value) * parseInt(price.value);
       totalPrice.value = parseInt(totalPrice.value) - temp + parseInt(total.value);
-      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`)
+      changeKuantitas(parseInt(kuantitas.value), `product-${id_form}`);
+      changeTotalHarga(parseInt(total.value), `product-${id_form}`);
     }
   }
 });
@@ -328,21 +341,9 @@ const autocomplete = (inp) => {
 autocomplete(document.getElementById('product-1'));
 
 submit.addEventListener("click", () => {
-  if(productList.length <= 0) {
-    modalEmpty.style.display = "block";
-  }else{
-    const d = new Date();
-    const waktu = [ d.getFullYear(),d.getMonth()+1, d.getDate()].join('-')+' '+ [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
-    fetch('http://127.0.0.1:5000/add-transaksi', {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ total_pembayaran: parseInt(totalPrice.value), metode_pembayaran: paymentMethond.value, items: productList, waktu: waktu })
-  })
-    .then(response => response.json())
-    .then(response => console.log(response))
-    modal.style.display = "block";
-  }
+  const d = new Date();
+  const waktu = [ d.getFullYear(),d.getMonth()+1, d.getDate()].join('-')+' '+ [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
+  const data = { total_pembayaran: parseInt(totalPrice.value), metode_pembayaran: paymentMethond.value, items: productList, waktu: waktu };
+  const editor = new EditorTransaksiForm(data);
+  editor.sendForm()
 });

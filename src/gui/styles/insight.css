@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Inter";
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav-row {
+  width: 100%;
+  padding: 30px 0px 30px 40px;
+  align-items: center;
+  display: flex;
+  gap: 50px;
+}
+
+.fa-arrow-left {
+  color: #979797;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.logo-riil{
+  width:250px;
+  margin-top: -20px;
+}
+
+
+.product-section {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px 30px 70px;
+}
+
+.page-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.see-more {
+  font-weight: 500;
+  font-size: 20px;
+  color: #979797;
+  cursor: pointer;
+}
+
+.wrapper-grid {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  padding: 30px 5px 5px;
+  grid-template-columns: auto auto;
+
+}
+
+.hide {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.none {
+  display: none !important;
+}
+
+/* STYLE FOR CHART */
+.graph-wrapper {
+  background: #FFFFFF;
+  width: 450px; 
+  height: 300px;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+}
+.graph {
+  display: block; /* fixes layout wonkiness in FF1.5 */
+  position: relative; 
+  width: 500px; 
+  height: 300px;
+  margin: 1.1em 0 0; 
+  padding: 0;
+  background: transparent;
+  font-size: 11px;
+}
+
+.graph caption {
+  caption-side: top; 
+  width: 450px;
+  letter-spacing: .5px;
+  top: -40px;
+  position: relative; 
+  z-index: 10;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.graph tr, .graph th, .graph td { 
+  position: absolute;
+  bottom: 0; 
+  width: 80px; 
+  z-index: 2;
+  margin: 0; 
+  padding: 0;
+  text-align: center;
+}
+
+.graph td {
+  transition: all .3s ease;
+  
+}
+
+.graph td:hover{
+  background-color: desaturate(#85144b, 100);
+  opacity: .9;
+}
+
+
+  
+.graph tbody tr {
+  padding-top: 2px;
+  color: #AAA;
+}
+.graph #q1 {
+  left: 40px;
+}
+.graph #q2 {left: 130px;}
+.graph #q3 {left: 220px;}
+.graph #q4 {left: 310px;}
+.graph #q5 {left: 400px;}
+.graph tbody th {
+  bottom: -3em; 
+  left: -15px;
+  vertical-align: top;
+  font-weight: bold; 
+  color: #333;
+  z-index: 10;
+}
+.graph .bar {
+  width: 50px; 
+  border: 1px solid; 
+  border-bottom: none; 
+  color: #000;
+  left: 0px; 
+  background-color: #7994AA;
+  border-color: transparent;
+  border-radius: 15px 15px 0px 0px;
+}
+.graph .bar p {
+  margin: 5px 0 0; 
+  padding: 0;
+  font-weight: bold;
+  display: none;
+}
+
+.ticks {
+  position: relative; 
+  top: -305px; 
+  left: 20px;
+  width: 400px; 
+  height: 300px; 
+  z-index: 1;
+  margin-bottom: -300px;
+  font-size: 10px;
+  font-family: "Inter";
+}
+
+.ticks .tick {
+  position: relative; 
+  border: 1px dotted #C4C4C4; 
+  width: 450px;
+  z-index: 0;
+}
+
+.ticks .tick p {
+  position: absolute; 
+  top: -0.8em;
+  left: -5.5em; 
+  margin: 0 0 0 0.5em;
+  z-index: 10;
+}

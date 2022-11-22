@@ -40,6 +40,37 @@ class Produk(object):
     rows = cur.fetchall()
     return json.dumps( [dict(i) for i in rows] )
 
+  def getAllProdukSales(self):
+    sql = f'''SELECT * FROM(SELECT nama, SUM(item_transaksi.kuantitas) as frekuensi 
+              FROM item_transaksi
+              JOIN produk
+              ON produk.id = item_transaksi.produk
+              GROUP BY item_transaksi.produk 
+              ORDER BY frekuensi
+              LIMIT 5)
+              ORDER BY nama
+              '''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    return json.dumps( [dict(i) for i in rows] )
+
+  def getProdukSalesByCategory(self):
+    sql = f'''SELECT * FROM(SELECT nama, SUM(item_transaksi.kuantitas) as frekuensi 
+              FROM item_transaksi
+              JOIN produk
+              ON produk.id = item_transaksi.produk
+              WHERE kategori = '{self.data}'
+              GROUP BY item_transaksi.produk 
+              ORDER BY frekuensi
+              LIMIT 5)
+              ORDER BY nama
+              '''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    return json.dumps( [dict(i) for i in rows] )
+
   def tambahKuantitasProduk(self):
     sql = f'''UPDATE produk
               SET kuantitas = kuantitas + {self.data['kuantitas']}

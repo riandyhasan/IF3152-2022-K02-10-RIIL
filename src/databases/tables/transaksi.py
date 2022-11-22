@@ -12,6 +12,19 @@ class Transaksi(object):
     rows = cur.fetchall()
     return json.dumps( [dict(i) for i in rows] )
   
+  def getTransaksiByMetodePembayaran(self):
+    sql = f'''SELECT * FROM (SELECT metode_pembayaran as nama, COUNT(metode_pembayaran) as frekuensi 
+            FROM riwayat_transaksi
+            GROUP BY metode_pembayaran
+            ORDER BY frekuensi
+            LIMIT 5)
+            ORDER BY nama
+            '''
+    cur = self.db.cursor()
+    cur.execute(sql)
+    rows = cur.fetchall()
+    return json.dumps( [dict(i) for i in rows] )
+  
   def addTransaksi(self):
     cur = self.db.cursor()
     sql = '''SELECT id FROM riwayat_transaksi ORDER BY id DESC LIMIT 1'''
