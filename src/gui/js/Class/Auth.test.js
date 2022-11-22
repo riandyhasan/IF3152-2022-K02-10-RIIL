@@ -1,4 +1,4 @@
-import { Auth } from "./Auth";
+import { Auth } from "./Auth.js";
 
 test("Jika password salah", () => {
   expect(Auth.validateAuth("kamunanyeu?")).toBe(false);
