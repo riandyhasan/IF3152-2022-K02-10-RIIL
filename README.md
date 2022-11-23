@@ -25,6 +25,11 @@ python -m venv env
 ```
 ./env/Scripts/activate
 ```
+4. Aktifkan virtual env python(mac)
+```
+./env/bin
+source activate
+```
 5. Install Python depedencies
 ```
 pip3 install -r requirements.txt
