@@ -146,10 +146,16 @@ def edit_produk():
     if request.method == "OPTIONS": # CORS preflight
         return _build_cors_preflight_response()
     elif request.method == 'PUT':
-        data = dict(request.json)
+        data = dict(request.form)
+        gambar = data['gambar']
+        if request.files:
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            image = Image.open(file)
+            image.save('./img/product/' + filename)
+            gambar = '/' + filename
         id_produk = data['id']
         nama = data['nama']
-        gambar = data['gambar']
         harga = data['harga']
         kategori = data['kategori']
         ukuran = data['ukuran']
