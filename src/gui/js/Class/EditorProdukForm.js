@@ -27,12 +27,7 @@ export class EditorProdukForm {
       }else{
         await fetch('http://127.0.0.1:5000/edit-produk', {
           method: "PUT",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.dataProduk)
-        })
+          body: formData})
         .then(response => response.json())
         .then(() => editModal.style.display = "block")
       }
