@@ -65,7 +65,6 @@ const productId = getProductId();
 
 productImage.addEventListener('change', e => {
   labelImage.innerHTML = e.target.value.replace(/.*[\/\\]/, '');
-  console.log(productImage.files[0])
 })
 
 back.setAttribute('href', `../Detail/index.html?id=${productId}`);
@@ -79,7 +78,7 @@ const productData = await fetch(`http://127.0.0.1:5000/get-produk?id=${productId
 const sizes = (productData.ukuran).split(' ') 
 
 productName.value = productData.nama;
-productImage.placeholder = productData.gambar;
+labelImage.innerHTML = productData.gambar;
 currentGambar = productData.gambar;
 productSize.value = parseInt(sizes[0]);
 productSizeLabel.value = sizes[1];
@@ -91,10 +90,25 @@ productPhone.value = ((productData.no_telp_supplier).toString()).replace('62', '
 
 const editProduk = async (data) => {
   const editor = new EditorProdukForm(data);
-  await editor.sendForm('edit');
+  let formData = new FormData();
+  formData.append("id", data.id);
+  formData.append("nama", data.nama);
+  formData.append("kategori", data.kategori);
+  formData.append("ukuran", data.ukuran);
+  formData.append("gambar", data.gambar);
+  formData.append("harga", data.harga);
+  formData.append("supplier", data.supplier);
+  formData.append("telp", data.telp);
+  formData.append("kuantitas", data.kuantitas);
+  formData.append("file", data.file);
+  await editor.sendForm('edit', formData);
 }
 
 save.addEventListener('click', () => {
+  let gambar;
+  if(productImage.value){
+    gambar = new File([productImage.files[0]], productName.value + "." + productImage.files[0].name.slice((productImage.files[0].name.lastIndexOf(".") - 1 >>> 0) + 2));
+  }
   const data = { 
     id: productId,
     nama: productName.value ?? '', 
@@ -105,6 +119,7 @@ save.addEventListener('click', () => {
     telp: productPhone.value[0] == '0' ? parseInt('62' + productPhone.value.substring(1)) : parseInt(productPhone.value),
     kuantitas: parseInt(productQuantity.value) ?? '',
     gambar: currentGambar,
+    file: gambar
   }
   editProduk(data);
 });
