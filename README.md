@@ -39,6 +39,71 @@ pip3 install -r requirements.txt
 npm start
 ```
 
+## Modules Implementation
+| Modul  | Penanggung Jawab |
+| ------------- | ------------- |
+| Transaksi  | 18220024 - Aulia Fajriaturrakhmah |
+| Produk Baru  | 18220030 - Shafira Putri Azmi Imani |
+| Hapus Produk  | 18220058 - Riandy Hasan |
+| Edit Produk  | 18220060 - Laksamana Vixell Tanjaya H. |
+| Rekap Penjualan  | 18220058 - Riandy Hasan |
+| Analisis Penjualan  | 18220058 - Riandy Hasan |
+| Search Produk  | 18220016 - Salsabila Asyifa Shalehah |
+
+1. Transaksi
+![Transaksi Page](./doc/Halaman Transaksi.jpg)
+![Transaksi Page](./doc/Halaman Formulir Transaksi.png)
+
+2. Produk Baru
+![Produk Baru Page](./doc/Halaman Tambah Data Product.png)
+![Produk Baru Page](./doc/Halaman Tambah Data Product (2).jpg)
+
+3. Hapus Produk
+![Hapus Produk Page](./doc/Hapus Product.png)
+
+4. Edit Produk
+![Edit Produk Page](./doc/Halaman Edit Data Product.png)
+
+5. Rekap Penjualan
+![Rekap Penjualan Page](./doc/Halaman Insight.jpg)
+
+6. Analisis Penjualan
+![Analisis Penjualan Page](./doc/Halaman Insight (2).jpg)
+
+7. Search Produk
+![Search Page](./doc/Halaman Search Product.jpg)
+
+## Database
+### Table produk
+| column  | attribute |
+| ------------- | ------------- |
+| id  | int |
+| nama  | text |
+| harga  | int |
+| gambar  | text |
+| kategori  | varchar(100) |
+| nama_supplier  | text |
+| no_telp_supplier  | int |
+| kuantitas  | int |
+| ukuran  | varchar(255) |
+
+### Table riwayat_transaksi
+| column  | attribute |
+| ------------- | ------------- |
+| id  | int |
+| wakti  | datetime |
+| total_pembayaran  | int |
+| metode_pembayaran  | varchar(100) |
+
+### Table item_transaksi
+| column  | attribute |
+| ------------- | ------------- |
+| id  | int |
+| produk  | int |
+| transaksi  | int |
+| kuantitas  | int |
+| total_harga  | int |
+
 ## Branching
 Setiap membuat branch baru harus ambil base dari `master`. Untuk penamaan branch mengikuti format berikut.
 Format branch: `<name>/feature/<title>`
