@@ -55,7 +55,7 @@ npm start
 ![Transaksi Page](doc/Halaman%20Formulir%20Transaksi.png)
 
 2. Produk Baru
-![Produk Baru Page](doc/Halaman%20Tambah-Data%20Product.png)
+![Produk Baru Page](doc/Halaman%20Tambah%20Data%20Product.png)
 ![Produk Baru Page](doc/Halaman%20Tambah%20Data%20Product%20(2).jpg)
 
 3. Hapus Produk
