@@ -18,6 +18,8 @@ const productSizeLabel = document.getElementById('ukuran-label')
 const plus_size = document.getElementById('plus-size');
 const minus_size = document.getElementById('minus-size');
 const save = document.getElementById('btn-save');
+const emptyModal = document.getElementById('empty-modal');
+const emptyBtn = document.getElementById('empty-ok');
 let currentGambar;
 
 const getProductId = () => {
@@ -66,6 +68,12 @@ const productId = getProductId();
 productImage.addEventListener('change', e => {
   labelImage.innerHTML = e.target.value.replace(/.*[\/\\]/, '');
 })
+
+document.addEventListener('click', e => {
+  if(e.target == emptyModal || e.target == emptyBtn){
+    emptyModal.style.display = 'none';
+  }
+});
 
 back.setAttribute('href', `../Detail/index.html?id=${productId}`);
 cancel.setAttribute('href', `../Detail/index.html?id=${productId}`);

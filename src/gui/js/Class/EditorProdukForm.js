@@ -12,7 +12,7 @@ export class EditorProdukForm {
 
   validateForm(){
     const data = this.dataProduk;
-    return !(!data.nama || !data.kategori || !data.ukuran || !data.gambar || !data.harga || !data.supplier || !data.telp || !data.kuantitas)
+    return !(!data.nama || !data.kategori || !data.ukuran || !data.gambar || !data.harga || !data.supplier || !data.telp || data.kuantitas < 0)
   }
 
   async sendForm(query, formData){

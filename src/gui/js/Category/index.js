@@ -1,9 +1,7 @@
-const searchWrapper = document.getElementById('search-wrapper');
+const searchWrapper = document.getElementById('category-wrapper');
 const see_more = document.getElementById('see-more');
-const searchLabel  =document.getElementById('search-val')
+const searchLabel  =document.getElementById('category-val')
 const IMAGE_PATH = "../../../../../img/product";
-const search_left = document.getElementById('search-left');
-const search_right = document.getElementById('search-right');
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -64,6 +62,8 @@ if(productData.length > 0){
     searchWrapper.innerHTML += content;
   });
 }else{
+  const search_left = document.getElementById('category-left');
+  const search_right = document.getElementById('category-right');
   see_more.classList.add('none');
   search_right.classList.add('none');
   search_left.classList.add('none');
@@ -74,6 +74,9 @@ if(productData.length > 0){
   `
   searchWrapper.innerHTML += content;
 }
+
+const search_left = document.getElementById('category-left');
+const search_right = document.getElementById('category-right');
 
 see_more.addEventListener('click', () => {
   if(see_more.innerHTML == 'Show more'){
