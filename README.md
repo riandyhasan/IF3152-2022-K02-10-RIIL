@@ -25,7 +25,7 @@ python -m venv env
 ```
 ./env/Scripts/activate
 ```
-4. Aktifkan virtual env python(mac)
+4. Aktifkan virtual env python (mac)
 ```
 ./env/bin
 source activate
@@ -51,27 +51,27 @@ npm start
 | Search Produk  | 18220016 - Salsabila Asyifa Shalehah |
 
 1. Transaksi
-![Transaksi Page](./doc/Halaman Transaksi.jpg)
-![Transaksi Page](./doc/Halaman Formulir Transaksi.png)
+![Transaksi Page](doc/Halaman Transaksi.jpg)
+![Transaksi Page](doc/Halaman Formulir Transaksi.png)
 
 2. Produk Baru
-![Produk Baru Page](./doc/Halaman Tambah Data Product.png)
-![Produk Baru Page](./doc/Halaman Tambah Data Product (2).jpg)
+![Produk Baru Page](doc/Halaman Tambah Data Product.png)
+![Produk Baru Page](doc/Halaman Tambah Data Product (2).jpg)
 
 3. Hapus Produk
-![Hapus Produk Page](./doc/Hapus Product.png)
+![Hapus Produk Page](doc/Hapus Product.png)
 
 4. Edit Produk
-![Edit Produk Page](./doc/Halaman Edit Data Product.png)
+![Edit Produk Page](doc/Halaman Edit Data Product.png)
 
 5. Rekap Penjualan
-![Rekap Penjualan Page](./doc/Halaman Insight.jpg)
+![Rekap Penjualan Page](doc/Halaman Insight.jpg)
 
 6. Analisis Penjualan
-![Analisis Penjualan Page](./doc/Halaman Insight (2).jpg)
+![Analisis Penjualan Page](doc/Halaman Insight (2).jpg)
 
 7. Search Produk
-![Search Page](./doc/Halaman Search Product.jpg)
+![Search Page](doc/Halaman Search Product.jpg)
 
 ## Database
 ### Table produk
