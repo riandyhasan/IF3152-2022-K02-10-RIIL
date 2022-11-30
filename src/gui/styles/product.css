@@ -73,9 +73,24 @@ body {
   justify-content: space-between;
 }
 
-.product-type {
+.category-type {
   font-weight: 700;
   font-size: 20px;
+}
+
+.product-type {
+  box-sizing: border-box;
+  width: 300px;
+
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: -8px;
 }
 
 .see-more {

@@ -38,7 +38,8 @@ def get_produk():
     id_produk = request.args.get('id')
     query = request.args.get('q')
     kategori = request.args.get('category')
-    data = {}
+    kuantitas = request.args.get('quantity')
+    data = []
     if id_produk:
         produk = pd.Produk(dbconn, id_produk)
         data = produk.getProduk()
@@ -48,6 +49,9 @@ def get_produk():
     elif kategori:
         produk = pd.Produk(dbconn, kategori)
         data = produk.getProdukByCategory()
+    elif kuantitas and kuantitas == "0":
+        produk = pd.Produk(dbconn,"")
+        data = produk.getEmptyProduk()
     return data
     
 @app.route("/get-item-transaksi", methods=['GET'])

@@ -53,9 +53,9 @@ const transactionData = await fetch('http://127.0.0.1:5000/get-all-transaksi')
 transactionData.forEach((item, i) => {
     const content = `
     <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""} style="cursor: pointer;">
-        <td class="item-row col-row-first" id=${item.id}>${item.waktu}</td>
-        <td class="item-row" id=${item.id}>${item.metode_pembayaran}</td>
-        <td class="item-row col-row-last" id=${item.id}>${formatRupiah(item.total_pembayaran)}</td>
+        <td class="item-row col-row-first" id=${item.id} style="cursor: pointer;">${item.waktu}</td>
+        <td class="item-row" id=${item.id} style="cursor: pointer;">${item.metode_pembayaran}</td>
+        <td class="item-row col-row-last" id=${item.id} style="cursor: pointer;">${formatRupiah(item.total_pembayaran)}</td>
     </tr>
     `;
     table.innerHTML += content;
@@ -65,9 +65,9 @@ transactionData.forEach((item, i) => {
 (transactionData.reverse()).forEach((item, i) => {
     const content = `
     <tr key="${i}" class=${i%2 === 1 ? "row-table" : ""} style="cursor: pointer;">
-        <td class="item-row col-row-first" id=${item.id}>${item.waktu}</td>
-        <td class="item-row" id=${item.id}>${item.metode_pembayaran}</td>
-        <td class="item-row col-row-last" id=${item.id}>${formatRupiah(item.total_pembayaran)}</td>
+        <td class="item-row col-row-first" id=${item.id} style="cursor: pointer;">${item.waktu}</td>
+        <td class="item-row" id=${item.id} style="cursor: pointer;">${item.metode_pembayaran}</td>
+        <td class="item-row col-row-last" id=${item.id} style="cursor: pointer;">${formatRupiah(item.total_pembayaran)}</td>
     </tr>
     `;
     contentLatest += content;

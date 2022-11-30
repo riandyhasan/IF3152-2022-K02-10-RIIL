@@ -2,6 +2,7 @@ const wrapper = document.getElementById('product-wrapper');
 const category = document.getElementById('category-wrapper');
 const see_more_product = document.getElementById('see-more-product');
 const see_more_category = document.getElementById('see-more-category');
+const product_type = document.getElementById('product-type');
 const IMAGE_PATH = "../../../../img/product";
 const IMAGE_CATEGORY = "../../../../img/category/"
 let isDown = false;
@@ -32,32 +33,48 @@ const productData = await fetch('http://127.0.0.1:5000/get-all-produk')
   .then((response) => response.json())
   .then((data) => { return data });
 
-productData.forEach((item, i) => {
-  const content = `
-    <a href="./Detail/index.html?id=${item.id}" style="text-decoration: none;">
-    <div class="card" key=${i} id="card-item-${item.id}">
-    <div class="${parseInt(item.kuantitas) > 0 ? 'none' : ''} habis-container">
-      <img src="../../../../img/habis.png" alt="Stok Habis" class="habis-icon"/>
-    </div>
-    <div class="card-image ${parseInt(item.kuantitas) > 0 ? '' : 'habis'}">
-      <img src="${item.gambar[0] == '/' ? IMAGE_PATH + item.gambar : item.gambar}" />
-    </div>
-    <div class="card-details">
-      <div class="product-name">
-      ${item.nama}
-      </div>
-      <div class="product-size">
-        ${item.ukuran}
-      </div>
-      <div class="product-price">
-        ${formatRupiah(item.harga)}
-      </div>
-    </div>
-  </div>
-  </a>
+
+const dataToCard = (productData) => {
+  let cards = `
+    <i class="fa fa-arrow-circle-left" id="product-left"></i>
+    <i class="fa fa-arrow-circle-right" id="product-right"></i>
   `;
-  wrapper.innerHTML += content;
-});
+  productData.forEach((item, i) => {
+    const content = `
+      <a href="./Detail/index.html?id=${item.id}" style="text-decoration: none;">
+      <div class="card" key=${i} id="card-item-${item.id}">
+      <div class="${parseInt(item.kuantitas) > 0 ? 'none' : ''} habis-container">
+        <img src="../../../../img/habis.png" alt="Stok Habis" class="habis-icon"/>
+      </div>
+      <div class="card-image ${parseInt(item.kuantitas) > 0 ? '' : 'habis'}">
+        <img src="${item.gambar[0] == '/' ? IMAGE_PATH + item.gambar : item.gambar}" />
+      </div>
+      <div class="card-details">
+        <div class="product-name">
+        ${item.nama}
+        </div>
+        <div class="product-size">
+          ${item.ukuran}
+        </div>
+        <div class="product-price">
+          ${formatRupiah(item.harga)}
+        </div>
+      </div>
+    </div>
+    </a>
+    `;
+    cards += content;
+  });
+  if(productData.length <= 0){
+    cards += `<div style="display: flex; width: 100%; justify-content: center; align-items: center; height: 200px;">
+                <h1 style="text-align: center;">Tidak ada produk</h1>
+                </div>
+                `
+  }
+  wrapper.innerHTML = cards
+} 
+
+dataToCard(productData);
 
 CATEGORY.forEach((item, i) => {
   const content = `
@@ -77,6 +94,21 @@ CATEGORY.forEach((item, i) => {
   category.innerHTML += content;
 });
 
+product_type.addEventListener('change', async e => {
+  if(e.target.value === 'all'){
+    const productData = await fetch('http://127.0.0.1:5000/get-all-produk')
+    .then((response) => response.json())
+    .then((data) => { return data });
+    dataToCard(productData);
+  }else if(e.target.value === 'habis'){
+    const productData = await fetch('http://127.0.0.1:5000/get-produk?quantity=0')
+    .then((response) => response.json())
+    .then((data) => { return data });
+    console.log(productData);
+    dataToCard(productData);
+  }
+})
+
 const product_left = document.getElementById('product-left');
 const product_right = document.getElementById('product-right');
 // const maxProductLeft = wrapper.scrollWidth - wrapper.clientWidth;
@@ -85,6 +117,8 @@ const category_right = document.getElementById('category-right');
 // const maxCategoryLeft = category.scrollWidth - category.clientWidth;
 
 see_more_product.addEventListener('click', () => {
+  const product_left = document.getElementById('product-left');
+  const product_right = document.getElementById('product-right');
   if(see_more_product.innerHTML == 'Show more'){
     see_more_product.innerHTML = 'Show less';
     wrapper.classList.remove('card-wrapper');
